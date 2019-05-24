@@ -1,0 +1,21 @@
+.Nav {
+    background: var(--purple);
+    min-height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 10;
+}
+
+.NavA {
+    color: white;
+    display: block;
+    letter-spacing: 0.2em;
+    padding: 0.2rem 1.5rem 0.3rem;
+    text-decoration: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    -o-font-smoothing: antialiased;
+}

@@ -1,9 +1,11 @@
 import React from "react";
 import { graphql } from 'gatsby';
 
-import RootDiv from '../components/RootDiv';
-import Header from '../components/Header';
-import Main from '../components/Main';
+import BodyDiv from '../components/layout/BodyDiv';
+import Header from '../components/layout/Header';
+import Main from '../components/layout/Main';
+
+import Helmet from '../components/Helmet';
 
 const IndexPage = ({ data }) => {
 
@@ -11,9 +13,11 @@ const IndexPage = ({ data }) => {
     const { header, main } = contentfulIndex;
     const entries = allContentfulCreation.edges;
 
-
     const jsx = (
-        <RootDiv>
+        <BodyDiv>
+
+            <Helmet></Helmet>
+
             <Header
             html={header.childMarkdownRemark.html}
             ></Header>
@@ -23,7 +27,7 @@ const IndexPage = ({ data }) => {
             entries={entries}
             ></Main>
             
-        </RootDiv>
+        </BodyDiv>
     );
 
     return jsx;

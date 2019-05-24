@@ -3,7 +3,7 @@ import { StaticQuery, graphql, Link } from 'gatsby';
 
 import './styles.css';
 
-const Nav = () => {
+const Nav = ({ children, classNameNav, classNameNavDiv, classNameNavA}) => {
 
     return (
         <StaticQuery 
@@ -33,13 +33,18 @@ const Nav = () => {
             const jsx = (
                 
                 <nav 
-                className='Nav'
+                className={classNameNav}
                 >
+                    { children }
     
-                    <div>
+                    <div
+                    className={classNameNavDiv}
+                    >
                         {workPages.map(page => (
                             <Link
+                            key={page.id}
                             to={`/${page.slug}`}
+                            className={classNameNavA}
                             >
 
                                 {page.name}
@@ -48,10 +53,14 @@ const Nav = () => {
                         ))}
                     </div>
 
-                    <div>
+                    <div
+                    className={classNameNavDiv}
+                    >
                         {personPages.map(page => (
                             <Link
+                            key={page.id}
                             to={`/${page.slug}`}
+                            className={classNameNavA}
                             >
 
                                 {page.name}

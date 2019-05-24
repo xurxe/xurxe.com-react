@@ -2,7 +2,7 @@ import React from 'react';
 
 import './styles.css';
 
-import SkillCategory from '../SkillCategory';
+import SkillCategory from '../../entries/SkillCategory';
 
 const EntryDiv = ({ entry }) => {
 
@@ -21,7 +21,7 @@ const EntryDiv = ({ entry }) => {
 
     else if (__typename) {
         jsx = (
-            <div 
+            <div
             className='Entry'>
     
                 <p>{__typename}</p>

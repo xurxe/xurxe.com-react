@@ -15,8 +15,8 @@ const Main = ({ html, entries }) => {
 
             {entries && entries.map(entry => 
                 <EntryDiv 
-                entry={entry} 
                 key={entry.id}
+                entry={entry} 
                 ></EntryDiv>
             )}
 

@@ -15,7 +15,7 @@ const SkillCategory = ({ entry }) => {
             <h3>{name}</h3>
             {skills.map(skill => 
                 <SkillDiv
-                id={skill.id}
+                key={skill.id}
                 name={skill.name}
                 level={skill.level}
                 ></SkillDiv>

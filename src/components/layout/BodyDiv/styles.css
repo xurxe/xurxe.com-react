@@ -1,0 +1,9 @@
+:root {
+    --purple: #8844bb;
+}
+
+html {
+    color: #1b0d25;
+    font-family: 'Roboto', sans-serif;
+    font-size: 18px;
+}
