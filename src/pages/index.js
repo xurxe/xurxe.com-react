@@ -1,18 +1,20 @@
 import React from "react";
 import { graphql } from 'gatsby';
-import Parser from 'html-react-parser';
+
+import RootDiv from '../components/RootDiv';
+import Header from '../components/Header';
 
 const IndexPage = ({ data }) => {
 
     const { contentfulIndex } = data;
 
     const jsx = (
-        <div 
-        className='BodyDiv'>
-            <header>
-                {Parser(contentfulIndex.header.childMarkdownRemark.html)}
-            </header>
-        </div>
+        <RootDiv>
+            <Header
+            html={contentfulIndex.header.childMarkdownRemark.html}
+            ></Header>
+            
+        </RootDiv>
     );
 
     return jsx;
@@ -26,8 +28,8 @@ query {
         id
         name
         header {
-                id
-                childMarkdownRemark {
+            id
+            childMarkdownRemark {
                 html
             }
         }

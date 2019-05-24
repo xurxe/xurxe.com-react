@@ -1,17 +1,33 @@
 import React from "react";
 import { graphql } from 'gatsby';
-import Parser from 'html-react-parser';
+
+import RootDiv from '../components/RootDiv';
+import Header from '../components/Header';
+import Main from '../components/Main';
+import EntryDiv from '../components/EntryDiv';
 
 const Page = ({ data }) => {
     const { contentfulPage } = data;
+    const { header, main } = contentfulPage;
 
     const jsx = (
-        <div 
-        className='BodyDiv'>
-            <header>
-                {Parser(contentfulPage.header.childMarkdownRemark.html)}
-            </header>
-        </div>
+        <RootDiv>
+            <Header
+            html={header.childMarkdownRemark.html}
+            ></Header>
+
+            <Main>
+
+                {main && main.map(entry => 
+                    <EntryDiv 
+                    entry={entry} 
+                    key={entry.id}
+                    ></EntryDiv>
+                )}
+
+            </Main>
+            
+        </RootDiv>
     );
 
     return jsx;
@@ -26,6 +42,18 @@ query($slug: String!){
         header {
             childMarkdownRemark {
                 html
+            }
+        }
+        main {
+            __typename
+            ... on ContentfulSkillCategory {
+                id
+                name
+                skills {
+                    id
+                    name
+                    level
+                }
             }
         }
     }
