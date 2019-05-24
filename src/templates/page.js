@@ -1,9 +1,9 @@
 import React from "react"
 // import { Link } from "gatsby"
 
-const IndexPage = () => {
+const Page = () => {
     return(
     <h1>Hello world</h1>
 )}
 
-export default IndexPage;
+export default Page
