@@ -4,11 +4,10 @@ import { graphql } from 'gatsby';
 import RootDiv from '../components/RootDiv';
 import Header from '../components/Header';
 import Main from '../components/Main';
-import EntryDiv from '../components/EntryDiv';
 
 const Page = ({ data }) => {
     const { contentfulPage } = data;
-    const { header, main } = contentfulPage;
+    const { header, main, entries } = contentfulPage;
 
     const jsx = (
         <RootDiv>
@@ -16,16 +15,10 @@ const Page = ({ data }) => {
             html={header.childMarkdownRemark.html}
             ></Header>
 
-            <Main>
-
-                {main && main.map(entry => 
-                    <EntryDiv 
-                    entry={entry} 
-                    key={entry.id}
-                    ></EntryDiv>
-                )}
-
-            </Main>
+            <Main
+            html={main.childMarkdownRemark.html}
+            entries={entries}
+            ></Main>
             
         </RootDiv>
     );
@@ -45,6 +38,11 @@ query($slug: String!){
             }
         }
         main {
+            childMarkdownRemark {
+                html
+            }
+        }
+        entries {
             __typename
             ... on ContentfulSkillCategory {
                 id

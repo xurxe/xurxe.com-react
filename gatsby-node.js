@@ -13,7 +13,7 @@ exports.createPages = ({ graphql, actions }) => {
                 }
             }
         }
-        allContentfulWork {
+        allContentfulCreation {
             edges {
                 node {
                     id
@@ -32,10 +32,10 @@ exports.createPages = ({ graphql, actions }) => {
                 },
             });
         });
-        result.data.allContentfulWork.edges.forEach(({ node }) => {
+        result.data.allContentfulCreation.edges.forEach(({ node }) => {
             createPage({
                 path: `/${node.slug}`,
-                component: path.resolve(`./src/templates/work.js`),
+                component: path.resolve(`./src/templates/creation.js`),
                 context: {
                     slug: node.id,
                 },

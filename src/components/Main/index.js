@@ -1,14 +1,24 @@
 import React from 'react';
+import Parser from 'html-react-parser';
 
 import './styles.css';
 
-const Main = ({ children }) => {
+import EntryDiv from '../EntryDiv';
+
+const Main = ({ html, entries }) => {
 
     const jsx = (
         <main
         className='Main'>
 
-            {children}
+            {Parser(html)}
+
+            {entries && entries.map(entry => 
+                <EntryDiv 
+                entry={entry} 
+                key={entry.id}
+                ></EntryDiv>
+            )}
 
         </main>
     );

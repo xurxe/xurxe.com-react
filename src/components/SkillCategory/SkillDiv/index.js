@@ -20,12 +20,15 @@ const SkillDiv = ({ id, name, level }) => {
             className='SkillDiv_nameSpan'
             >
                 {name}
+
             </span>
 
             <div
             className='SkillDiv_levelsDiv'
             >
+
                 {Parser(html)}
+                
             </div>
 
         </div>

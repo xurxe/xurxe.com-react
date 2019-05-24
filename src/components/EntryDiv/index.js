@@ -19,12 +19,24 @@ const EntryDiv = ({ entry }) => {
         );
     }
 
-    else {
+    else if (__typename) {
         jsx = (
             <div 
             className='Entry'>
     
-                <p>{entry.id}</p>
+                <p>{__typename}</p>
+    
+            </div>
+        );
+    }
+
+    else {
+
+        jsx = (
+            <div 
+            className='Entry'>
+    
+                <p>{entry.node.title}</p>
     
             </div>
         );
