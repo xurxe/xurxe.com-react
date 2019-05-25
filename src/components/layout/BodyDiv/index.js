@@ -35,12 +35,17 @@ class RootDiv extends React.Component {
             `,
             classNameNavButton: `
             Nav_button 
-            Nav_button___desktop
+            Nav_button___displayNone
+            Nav_button___invisible
             `,
             classNameNavDiv: `
             Nav_div 
-            Nav_div___desktop 
+            Nav_div___displayBlock 
             Nav_div___visible
+            `,
+            classNameNavA: `
+            NavA
+            NavA___desktop
             `,
             classNameHeaderMainWrapper: `
             HeaderMainWrapper
@@ -54,17 +59,21 @@ class RootDiv extends React.Component {
             desktop: false,
             classNameNav: `
             Nav 
-            Nav___mobile 
             Nav___tucked
             `,
             classNameNavButton: `
             Nav_button 
-            Nav_button___mobile 
-            Nav_p___visible
+            Nav_button___displayBlock
+            Nav_button___visible
             `,
             classNameNavDiv: `
             Nav_div 
-            Nav_div___tucked
+            Nav_div___displayNone
+            Nav_div___invisible
+            `,
+            classNameNavA: `
+            NavA
+            NavA___mobile
             `,
             classNameHeaderMainWrapper: `
             HeaderMainWrapper
@@ -86,19 +95,14 @@ class RootDiv extends React.Component {
     changeDesktopToTucked = () => {
         this.setState(() => ({
             desktop: false,
-            classNameNavButton: `
-            Nav_button 
-            Nav_button___desktop 
-            Nav_button___invisible
-            `,
             classNameNavDiv: `
             Nav_div 
-            Nav_div___desktop 
+            Nav_div___displayBlock 
             Nav_div___invisible
             `,
-            classNameHeaderMainWrapper: `
-            HeaderMainWrapper
-            HeaderMainWrapper___narrowPadding
+            classNameNavA: `
+            NavA
+            NavA___mobile
             `,
         }));
 
@@ -106,17 +110,21 @@ class RootDiv extends React.Component {
             this.setState(() => ({
                 classNameNav: `
                 Nav 
-                Nav___mobile 
                 Nav___tucked
                 `,
                 classNameNavButton: `
                 Nav_button 
-                Nav_button___mobile 
-                Nav_p___invisible
+                Nav_button___displayBlock
+                Nav_button___invisible 
                 `,
                 classNameNavDiv: `
                 Nav_div 
-                Nav_div___tucked
+                Nav_div___displayNone
+                Nav_div___invisible
+                `,
+                classNameHeaderMainWrapper: `
+                HeaderMainWrapper
+                HeaderMainWrapper___narrowPadding
                 `,
             }));
         }, 500);
@@ -125,8 +133,7 @@ class RootDiv extends React.Component {
             this.setState(() => ({
                 classNameNavButton: `
                 Nav_button 
-                Nav_button___mobile 
-                Nav_button___visible
+                Nav_button___displayBlock                Nav_button___visible
                 `,
             }));
         }, 550);
@@ -137,19 +144,19 @@ class RootDiv extends React.Component {
     changeTuckedToDesktop = () => {
         this.setState(() => ({
             desktop: true, 
-            tucked: true,
             classNameNavButton: `
             Nav_button 
+            Nav_button___displayBlock
             Nav_button___invisible
             `,
             classNameNavDiv: `
             Nav_div 
-            Nav_div___untucked 
+            Nav_div___displayBlock 
             Nav_div___invisible
             `,
-            classNameHeaderMainWrapper: `
-            HeaderMainWrapper
-            HeaderMainWrapper___widePadding
+            classNameNavA: `
+            NavA
+            NavA___desktop
             `,
         }));
 
@@ -161,15 +168,25 @@ class RootDiv extends React.Component {
                 `,
                 classNameNavButton: `
                 Nav_button 
-                Nav_button___desktop
+                Nav_button___displayNone
+                Nav_button___invisible
                 `,
-                classNameNavDiv: `
-                Nav_div 
-                Nav_div___desktop
-                Nav_div___visible
+                classNameHeaderMainWrapper: `
+                HeaderMainWrapper
+                HeaderMainWrapper___widePadding
                 `,
             }));
         }, 500);
+
+        setTimeout(() => {
+            this.setState(() => ({
+                classNameNavDiv: `
+                Nav_div 
+                Nav_div___displayBlock
+                Nav_div___visible
+                `,
+            }));
+        }, 700);
 
         return;
     };
@@ -179,17 +196,12 @@ class RootDiv extends React.Component {
             tucked: false,
             classNameNav: `
             Nav 
-            Nav___mobile 
             Nav___untucked
             `,
             classNameNavDiv: `
             Nav_div 
-            Nav_div___untucked 
+            Nav_div___displayBlock 
             Nav_div___invisible
-            `,
-            classNameHeaderMainWrapper: `
-            HeaderMainWrapper
-            HeaderMainWrapper___widePadding
             `,
         }));
 
@@ -197,7 +209,7 @@ class RootDiv extends React.Component {
             this.setState(() => ({
                 classNameNavDiv: `
                 Nav_div 
-                Nav_div___untucked 
+                Nav_div___displayBlock 
                 Nav_div___visible
                 `,
             }));
@@ -211,17 +223,12 @@ class RootDiv extends React.Component {
             tucked: true,
             classNameNav: `
             Nav 
-            Nav___mobile 
             Nav___tucked
             `,
             classNameNavDiv: `
             Nav_div 
-            Nav_div___untucked 
+            Nav_div___displayBlock 
             Nav_div___invisible
-            `,
-            classNameHeaderMainWrapper: `
-            HeaderMainWrapper
-            HeaderMainWrapper___narrowPadding
             `,
         }));
         
@@ -229,8 +236,8 @@ class RootDiv extends React.Component {
             this.setState(() => ({
                 classNameNavDiv: `
                 Nav_div 
-                Nav_div___untucked 
-                Nav_div___tucked
+                Nav_div___displayNone
+                Nav_div___invisible
                 `,
             }));
         }, 300);

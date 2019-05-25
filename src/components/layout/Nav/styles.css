@@ -7,6 +7,71 @@
     z-index: 10;
 }
 
+.Nav___desktop {
+    width: 11rem;
+    transition: width 1s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.Nav___tucked {
+    width: 2rem;
+    transition: width 1s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.Nav___untucked {
+    width: 100%;
+    transition: width 1s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.Nav_button {
+    background: white;
+    border: none;
+    height: 2rem;
+    outline: none;
+    width: 2rem;
+}
+
+.Nav_button___visible {
+    opacity: 1;
+    transition: 1s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.Nav_button___invisible {
+    opacity: 0;
+    transition: 1s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.Nav_button___displayNone {
+    display: none;
+}
+
+.Nav_button___displayBlock {
+    display: block;
+}
+
+
+.Nav_div___visible {
+    opacity: 1;
+    transition: 1s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.Nav_div___invisible {
+    opacity: 0;
+    transition: 1s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.Nav_div___displayNone {
+    display: none;
+}
+
+.Nav_div___displayBlock {
+    display: block;
+}
+
+
+
+
+
+
 .NavA {
     color: white;
     display: block;
@@ -18,4 +83,34 @@
     -moz-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     -o-font-smoothing: antialiased;
+    transition: 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.NavA:hover {
+    color: var(--purple);
+    background: white;
+    transition: 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+    -webkit-font-smoothing: auto;
+    -moz-font-smoothing: auto;
+    -moz-osx-font-smoothing: auto;
+    -o-font-smoothing: auto;
+}
+
+.NavA:focus {
+    background: white;
+    color: var(--purple);
+    outline: none;
+    transition: 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+    -webkit-font-smoothing: auto;
+    -moz-font-smoothing: auto;
+    -moz-osx-font-smoothing: auto;
+    -o-font-smoothing: auto;
+}
+
+.NavA___desktop {
+    text-align: left;
+}
+
+.NavA___mobile {
+    text-align: center;
 }

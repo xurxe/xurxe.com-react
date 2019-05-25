@@ -7,3 +7,20 @@ html {
     font-family: 'Roboto', sans-serif;
     font-size: 18px;
 }
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    scroll-behavior: smooth;
+}
+
+.HeaderMainWrapper___widePadding {
+    padding: 3rem 3rem 3rem 14rem;
+    transition: padding 1s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.HeaderMainWrapper___narrowPadding {
+    padding: 1rem 1rem 1rem 3rem;
+    transition: padding 1s cubic-bezier(0.19, 1, 0.22, 1);
+}
