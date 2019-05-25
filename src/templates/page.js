@@ -5,6 +5,7 @@ import Layout from '../components/layout/Layout';
 import Header from '../components/layout/Header';
 import Main from '../components/layout/Main';
 
+
 const Page = ({ data }) => {
     const { contentfulPage } = data;
     const { slug, header, main, entries } = contentfulPage;

@@ -1,9 +1,9 @@
 import React from 'react';
 import ReactResizeDetector from 'react-resize-detector';
+import { StaticQuery, graphql } from 'gatsby';
+import AniLink from 'gatsby-plugin-transition-link/AniLink';
 
 import './styles.css';
-
-import Nav from '../Nav';
 
 class Layout extends React.Component {
 
@@ -15,7 +15,7 @@ class Layout extends React.Component {
         classNameNavDiv: 'NavDiv',
         classNameNavA: 'NavA',
         classNameHeaderMainWrapper: 'HeaderMainWrapper___widePadding',
-    }
+    };
 
     renderDesktop = () => {
         this.setState(() => ({
@@ -25,7 +25,7 @@ class Layout extends React.Component {
             classNameNavA: 'NavA NavA___desktop',
             classNameHeaderMainWrapper: ' HeaderMainWrapper___widePadding',
         }));
-    }
+    };
 
     renderMobile = () => {
         this.setState(() => ({
@@ -36,7 +36,7 @@ class Layout extends React.Component {
             classNameNavA: 'NavA NavA___mobile',
             classNameHeaderMainWrapper: ' HeaderMainWrapper___narrowPadding',
         }));
-    }
+    };
 
     componentDidMount = () => {
         if (window.matchMedia('(max-width: 600px)').matches) {
@@ -47,7 +47,7 @@ class Layout extends React.Component {
             this.renderDesktop();
         }
     }
-
+;
     changeDesktopToTucked = () => {
         this.setState(() => ({
             desktop: false,
@@ -172,47 +172,112 @@ class Layout extends React.Component {
 
     render () {
 
-        const jsx = (
-            <ReactResizeDetector
-            handleWidth
-            onResize={this.handleWindowResize}
-            refreshMode='throttle'
-            refreshRate={100}
-            >
+        return (
+            <StaticQuery 
+            query={
+                graphql`
+                query {
+                    contentfulNavigationBar {
+                        id
+                        workPages {
+                            id
+                            name
+                            slug
+                        }
+                        personPages {
+                            id
+                            name
+                            slug
+                        }
+                    }
+                }    
+                `
+            }
+            render={data => {
+                const { contentfulNavigationBar } = data;
+                const { workPages, personPages } = contentfulNavigationBar;
+        
+                const jsx = (
+                    <ReactResizeDetector
+                    handleWidth
+                    onResize={this.handleWindowResize}
+                    refreshMode='throttle'
+                    refreshRate={100}
+                    >
+                            
+                        <div 
+                        className='RootDiv'>
                     
-                <div 
-                className='RootDiv'>
+                            <nav 
+                            className={this.state.classNameNav}
+                            >
+                                <button 
+                                className={this.state.classNameNavButton}
+                                onClick={this.handleClick}
+                                ></button>
         
-                    <Nav
-                    classNameNav={this.state.classNameNav}
-                    classNameNavDiv={this.state.classNameNavDiv}
-                    classNameNavA={this.state.classNameNavA}
-                    classNameNavButton={this.state.classNameNavButton}
-                    handleClick={this.handleClick}
-                    >
-
-                        <button 
-                        className={this.state.classNameNavButton}
-                        onClick={this.handleClick}
-                        ></button>
-
-                    </Nav>
+                                <div
+                                className={this.state.classNameNavDiv}
+                                >
+                                    {workPages.map(page => (
+                                        <AniLink
+                                        to={`/${page.slug}`}
+                                        cover
+                                        direction='right'
+                                        bg='#7f3fbf'
+                                        duration={1}
+                                        key={page.id}
+                                        className={this.state.classNameNavA}
+                                        >
         
-                    <div
-                    className={this.state.classNameHeaderMainWrapper}
-                    >
+                                            {page.name}
         
-                        {this.props.children}
+                                        </AniLink>
+                                    ))}
+                                </div>
+        
+                                <div
+                                className={this.state.classNameNavDiv}
+                                >
+                                    {personPages.map(page => (
+                                        <AniLink
+                                        to={`/${page.slug}`}
+                                        cover
+                                        direction='right'
+                                        bg='#7f3fbf'
+                                        duration={1}
+                                        key={page.id}
+                                        className={this.state.classNameNavA}
+                                        >
+        
+                                            {page.name}
+        
+                                        </AniLink>
+                                    ))}
+                                </div>
+        
+                            </nav>
+                
+                        <div
+                        className={this.state.classNameHeaderMainWrapper}
+                        >
+        
+                            {this.props.children}
+        
+                        </div>
         
                     </div>
+                </ReactResizeDetector>
         
-                </div>
-            </ReactResizeDetector>
+                );
+        
+                return jsx;
+            }}
+            />
         );
-    
-        return jsx;
     }
     
 };
 
 export default Layout;
+
