@@ -23,6 +23,7 @@ const IndexPage = ({ data }) => {
             ></Header>
  
             <Main
+            page='index'
             html={main.childMarkdownRemark.html}
             entries={entries}
             ></Main>

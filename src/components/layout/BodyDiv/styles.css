@@ -1,9 +1,27 @@
 :root {
-    --purple: #8844bb;
+    --purple95: hsl(270, 50%, 95%);
+    --purple90: hsl(270, 50%, 90%);
+    --purple85: hsl(270, 50%, 85%);
+    --purple80: hsl(270, 50%, 80%);
+    --purple75: hsl(270, 50%, 75%);
+    --purple70: hsl(270, 50%, 70%);
+    --purple65: hsl(270, 50%, 65%);
+    --purple60: hsl(270, 50%, 60%);
+    --purple55: hsl(270, 50%, 55%);
+    --purple50: hsl(270, 50%, 50%);
+    --purple45: hsl(270, 50%, 45%);
+    --purple40: hsl(270, 50%, 40%);
+    --purple35: hsl(270, 50%, 35%);
+    --purple30: hsl(270, 50%, 30%);
+    --purple25: hsl(270, 50%, 25%);
+    --purple20: hsl(270, 50%, 20%);
+    --purple15: hsl(270, 50%, 15%);
+    --purple10: hsl(270, 50%, 10%);
+    --purple05: hsl(270, 50%, 05%);
 }
 
 html {
-    color: #1b0d25;
+    color: var(--purple10);
     font-family: 'Roboto', sans-serif;
     font-size: 18px;
 }
@@ -15,12 +33,74 @@ html {
     scroll-behavior: smooth;
 }
 
+h1 {
+    color: var(--purple50);
+    font-size: 110px;
+    font-weight: normal;
+    letter-spacing: 0.1em;
+    margin-bottom: 0.25em;
+
+}
+
+h2 {
+    color: var(--purple50);
+    font-size: 30px;
+    font-weight: normal;
+    letter-spacing: 0.05em;
+    margin: 2em 0 1em;
+}
+
+h3 {
+    color: var(--purple40);
+    font-size: 1.25rem;
+    margin: 2em 0 0.5em; 
+}
+
+p {
+    line-height: 1.5rem;
+    margin-bottom: 1em;
+}
+
+strong {
+    color: var(--purple50);
+    display: inline;
+    font-size: 30px;
+    font-weight: normal;
+    letter-spacing: 0.05em;
+}
+
+em {
+    font-style: italic;
+    font-weight: normal;
+}
+
+
+@media only screen and (min-width: 600px) and (max-width: 1000px) {
+    h1 {
+        font-size: calc(40px + (110 - 40) * (100vw - 600px) / (1000 - 600));    
+    }
+
+    h2, strong {
+        font-size: calc(25px + (30 - 25) * (100vw - 600px) / (1000 - 600)); 
+    }   
+}
+
+@media only screen and (max-width: 600px) {
+    h1 {
+        font-size: 40px;
+    }
+
+    h2, strong {
+        font-size: 25px;
+    }
+}
+
 .HeaderMainWrapper___widePadding {
     padding: 3rem 3rem 3rem 14rem;
-    transition: padding 1s cubic-bezier(0.19, 1, 0.22, 1);
+    transition: 1s cubic-bezier(0.19, 1, 0.22, 1);
 }
 
 .HeaderMainWrapper___narrowPadding {
     padding: 1rem 1rem 1rem 3rem;
-    transition: padding 1s cubic-bezier(0.19, 1, 0.22, 1);
+    transition: 1s cubic-bezier(0.19, 1, 0.22, 1);
 }

@@ -8,19 +8,19 @@ const SkillDiv = ({ name, level }) => {
     let html = '';
 
     for (let i = 0; i < level; i++) {
-        html += `<div class="levelDiv levelDiv___${i + 1}">x</div>`
+        html += `<div class="SkillDiv_levelDiv SkillDiv_levelDiv___${i + 1}"></div>`
     };
 
     const jsx = (
         <div
         className='SkillDiv'>
 
-            <span
-            className='SkillDiv_nameSpan'
+            <p
+            className='SkillDiv_nameP'
             >
                 {name}
 
-            </span>
+            </p>
 
             <div
             className='SkillDiv_levelsDiv'

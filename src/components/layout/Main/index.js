@@ -5,7 +5,7 @@ import './styles.css';
 
 import EntryDiv from '../EntryDiv';
 
-const Main = ({ html, entries }) => {
+const Main = ({ page, html, entries }) => {
 
     const jsx = (
         <main
@@ -13,12 +13,16 @@ const Main = ({ html, entries }) => {
 
             {Parser(html)}
 
-            {entries && entries.map(entry => 
-                <EntryDiv 
-                key={entry.id}
-                entry={entry} 
-                ></EntryDiv>
-            )}
+            {entries && 
+            <div
+            className={`Main_entries Main_entries___${page}`}>
+                {entries.map(entry => 
+                    <EntryDiv 
+                    key={entry.id}
+                    entry={entry} 
+                    ></EntryDiv>
+                )}
+            </div>}
 
         </main>
     );

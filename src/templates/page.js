@@ -7,7 +7,7 @@ import Main from '../components/layout/Main';
 
 const Page = ({ data }) => {
     const { contentfulPage } = data;
-    const { header, main, entries } = contentfulPage;
+    const { slug, header, main, entries } = contentfulPage;
 
     const jsx = (
         <BodyDiv>
@@ -16,6 +16,7 @@ const Page = ({ data }) => {
             ></Header>
 
             <Main
+            page={slug}
             html={main.childMarkdownRemark.html}
             entries={entries}
             ></Main>
@@ -32,6 +33,7 @@ export const query = graphql`
 query($slug: String!){ 
 	contentfulPage (id: { eq: $slug }){
         id
+        slug
         header {
             childMarkdownRemark {
                 html
