@@ -1,3 +1,7 @@
+.Main_text {
+    max-width: 25rem;
+}
+
 .Main_entries___skills {
     display: grid;
     grid-auto-flow: row;

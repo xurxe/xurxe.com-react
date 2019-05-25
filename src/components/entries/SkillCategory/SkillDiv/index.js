@@ -3,7 +3,7 @@ import Parser from 'html-react-parser';
 
 import './styles.css';
 
-const SkillDiv = ({ name, level }) => {
+const SkillDiv = ({ id, name, level }) => {
 
     let html = '';
 
@@ -13,6 +13,7 @@ const SkillDiv = ({ name, level }) => {
 
     const jsx = (
         <div
+        key={id}
         className='SkillDiv'>
 
             <p

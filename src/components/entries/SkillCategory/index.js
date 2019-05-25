@@ -6,10 +6,11 @@ import SkillDiv from './SkillDiv';
 
 const SkillCategory = ({ entry }) => {
 
-    const {name, skills} = entry;
+    const {id, name, skills} = entry;
 
     const jsx = (
         <div 
+        key={id}
         className='Entry Entry___skillCategory'>
 
             <h3>{name}</h3>

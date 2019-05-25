@@ -11,7 +11,13 @@ const Main = ({ page, html, entries }) => {
         <main
         className='Main'>
 
-            {Parser(html)}
+            <div
+            className='Main_text'
+            >
+
+                {html && Parser(html)}
+
+            </div>
 
             {entries && 
             <div

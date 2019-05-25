@@ -22,7 +22,9 @@ const EntryDiv = ({ entry }) => {
     else if (__typename) {
         jsx = (
             <div
-            className='Entry'>
+            key={entry.id}
+            className='Entry'
+            >
     
                 <p>{__typename}</p>
     
@@ -34,7 +36,9 @@ const EntryDiv = ({ entry }) => {
 
         jsx = (
             <div 
-            className='Entry'>
+            key={entry.node.id}
+            className='Entry'
+            >
     
                 <p>{entry.node.title}</p>
     

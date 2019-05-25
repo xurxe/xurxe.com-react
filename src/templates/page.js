@@ -16,11 +16,16 @@ const Page = ({ data }) => {
             html={header.childMarkdownRemark.html}
             ></Header>
 
-            <Main
+            {main && <Main
             page={slug}
             html={main.childMarkdownRemark.html}
             entries={entries}
-            ></Main>
+            ></Main>}
+
+            {!main && <Main
+            page={slug}
+            entries={entries}
+            ></Main>}
             
         </Layout>
     );
@@ -36,11 +41,13 @@ query($slug: String!){
         id
         slug
         header {
+            id
             childMarkdownRemark {
                 html
             }
         }
         main {
+            id
             childMarkdownRemark {
                 html
             }

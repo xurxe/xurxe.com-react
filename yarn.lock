@@ -4971,16 +4971,17 @@ gatsby-plugin-sharp@^2.1.0:
     sharp "^0.22.1"
     svgo "^1.2.0"
 
-gatsby-plugin-transition-link@^1.12.4:
-  version "1.12.4"
-  resolved "https://registry.yarnpkg.com/gatsby-plugin-transition-link/-/gatsby-plugin-transition-link-1.12.4.tgz#2720ec154e28981de906c200c16a240d6cb59cba"
-  integrity sha512-+1j/knyO/7soWAokoWvNuta8EzEmBVgsPMQh+8QxHVmwMfhzh+o6AnvPITWgcjFShbb6sC91JO/LQze3T52jeQ==
+gatsby-plugin-transition-link@1.9.1:
+  version "1.9.1"
+  resolved "https://registry.yarnpkg.com/gatsby-plugin-transition-link/-/gatsby-plugin-transition-link-1.9.1.tgz#e487d0106f5533b2ce945af1408b7663041129ac"
+  integrity sha512-wU4/OCzXqnd3WTq29/wnjNf/KnnBbyv2Ne69aSIGUB4GyBdXqQEGPmlwaLqWhtYEdYsQ57K/OmfzaHUOWjhRBA==
   dependencies:
     babel-preset-gatsby-package "^0.1.2"
     color-convert "^1.9.3"
     cross-env "^5.2.0"
     json-bump "^0.1.3"
     polyfill-array-includes "^1.0.0"
+    react "^16.6.0"
     react-transition-group "^2.5.0"
     requestanimationframe-timer "^1.0.4"
 
@@ -9672,7 +9673,7 @@ react@15:
     object-assign "^4.1.0"
     prop-types "^15.5.10"
 
-react@^16.8.4, react@^16.8.6:
+react@^16.6.0, react@^16.8.4, react@^16.8.6:
   version "16.8.6"
   resolved "https://registry.yarnpkg.com/react/-/react-16.8.6.tgz#ad6c3a9614fd3a4e9ef51117f54d888da01f2bbe"
   integrity sha512-pC0uMkhLaHm11ZSJULfOBqV4tIZkx87ZLvbbQYunNixAAvjnC+snJCg0XQXn9VIsttVsbZP/H/ewzgsd5fxKXw==

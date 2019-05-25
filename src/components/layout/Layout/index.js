@@ -10,20 +10,19 @@ class Layout extends React.Component {
     state = {
         desktop: true,
         tucked: true,
+        buttonAriaLabel: 'Open the navigation bar',
         classNameNav: 'Nav',
         classNameNavButton: 'NavButton',
         classNameNavDiv: 'NavDiv',
-        classNameNavA: 'NavA',
-        classNameHeaderMainWrapper: 'HeaderMainWrapper___widePadding',
+        classNameHeaderMainWrapper: 'HeaderMainWrapper___desktop',
     };
 
     renderDesktop = () => {
         this.setState(() => ({
             classNameNav: 'Nav Nav___desktop',
-            classNameNavButton: 'Nav_button displayNone invisible',
-            classNameNavDiv: 'Nav_div displayBlock visible',
-            classNameNavA: 'NavA NavA___desktop',
-            classNameHeaderMainWrapper: ' HeaderMainWrapper___widePadding',
+            classNameNavButton: 'NavButton displayNone invisible',
+            classNameNavDiv: 'NavDiv displayBlock visible',
+            classNameHeaderMainWrapper: 'HeaderMainWrapper___desktop',
         }));
     };
 
@@ -31,10 +30,9 @@ class Layout extends React.Component {
         this.setState(() => ({
             desktop: false,
             classNameNav: 'Nav Nav___tucked',
-            classNameNavButton: 'Nav_button displayBlock visible',
-            classNameNavDiv: 'Nav_div displayNone invisible',
-            classNameNavA: 'NavA NavA___mobile',
-            classNameHeaderMainWrapper: ' HeaderMainWrapper___narrowPadding',
+            classNameNavButton: 'NavButton displayBlock visible',
+            classNameNavDiv: 'NavDiv displayNone invisible',
+            classNameHeaderMainWrapper: ' HeaderMainWrapper___mobile',
         }));
     };
 
@@ -45,89 +43,81 @@ class Layout extends React.Component {
 
         else {
             this.renderDesktop();
-        }
-    }
-;
+        };
+    };
+
     changeDesktopToTucked = () => {
         this.setState(() => ({
             desktop: false,
-            classNameNavDiv: 'Nav_div displayBlock invisible',
-            classNameNavA: 'NavA NavA___mobile',
+            classNameNavDiv: 'NavDiv displayBlock invisible',
         }));
 
         setTimeout(() => {
             this.setState(() => ({
                 classNameNav: 'Nav Nav___tucked',
-                classNameNavButton: 'Nav_button displayBlock invisible',
-                classNameNavDiv: 'Nav_div displayNone invisible',
+                classNameNavButton: 'NavButton displayBlock invisible',
+                classNameNavDiv: 'NavDiv displayNone invisible',
                 classNameHeaderMainWrapper: 'HeaderMainWrapper___narrowPadding',
             }));
         }, 500);
 
         setTimeout(() => {
             this.setState(() => ({
-                classNameNavButton: 'Nav_button displayBlock visible',
+                classNameNavButton: 'NavButton displayBlock visible',
             }));
         }, 550);
-
-        return;
     };
 
     changeTuckedToDesktop = () => {
         this.setState(() => ({
             desktop: true, 
-            classNameNavButton: 'Nav_button displayBlock invisible',
-            classNameNavDiv: 'Nav_div displayBlock invisible',
-            classNameNavA: 'NavA NavA___desktop',
+            classNameNavButton: 'NavButton displayBlock invisible',
+            classNameNavDiv: 'NavDiv displayBlock invisible',
         }));
 
         setTimeout(() => {
             this.setState(() => ({
                 classNameNav: 'Nav Nav___desktop',
-                classNameNavButton: 'Nav_button displayNone invisible',
+                classNameNavButton: 'NavButton displayNone invisible',
                 classNameHeaderMainWrapper: 'HeaderMainWrapper___widePadding',
             }));
         }, 500);
 
         setTimeout(() => {
             this.setState(() => ({
-                classNameNavDiv: 'Nav_div displayBlock visible',
+                classNameNavDiv: 'NavDiv displayBlock visible',
             }));
         }, 700);
-
-        return;
     };
 
     untuck = () => {
         this.setState(() => ({
             tucked: false,
+            buttonAriaLabel: 'Close the navigation bar',
             classNameNav: 'Nav Nav___untucked',
-            classNameNavDiv: 'Nav_div displayBlock invisible',
+            classNameNavDiv: 'NavDiv NavDiv___untucked displayBlock invisible',
         }));
 
         setTimeout(() => {
             this.setState(() => ({
-                classNameNavDiv: 'Nav_div displayBlock visible',
+                classNameNavDiv: 'NavDiv NavDiv___untucked displayBlock visible',
             }));
-        }, 300);
-
-        return;
+        }, 200);
     };
 
     tuck = () => {
         this.setState(() => ({
             tucked: true,
-            classNameNav: 'Nav Nav___tucked',
-            classNameNavDiv: 'Nav_div displayBlock invisible',
+            buttonAriaLabel: 'Open the navigation bar',
+            classNameNavDiv: 'NavDiv NavDiv___untucked displayBlock invisible',
         }));
         
         setTimeout(() => {
             this.setState(() => ({
-                classNameNavDiv: 'Nav_div displayNone invisible',
+                classNameNav: 'Nav Nav___tucked',
+                classNameNavDiv: 'NavDiv displayNone invisible',
             }));
-        }, 300);
-
-        return;
+        }, 200);
     };
 
     handleWindowResize = () => {
@@ -178,7 +168,33 @@ class Layout extends React.Component {
                 graphql`
                 query {
                     contentfulNavigationBar {
-                        id
+                        logo {
+                            id
+                            fixed (quality: 100, width: 144, height: 144) {
+                                aspectRatio
+                                width
+                                height
+                                src
+                                srcSet
+                                srcWebp
+                                srcSetWebp
+                            }
+                        }
+                        logoHover {
+                            id
+                            fixed (quality: 100, width: 144, height: 144) {
+                                aspectRatio
+                                width
+                                height
+                                src
+                                srcSet
+                                srcWebp
+                                srcSetWebp
+                            }
+                        }
+                        firstName
+                        middleName
+                        lastName
                         workPages {
                             id
                             name
@@ -190,12 +206,12 @@ class Layout extends React.Component {
                             slug
                         }
                     }
-                }    
+                }   
                 `
             }
             render={data => {
                 const { contentfulNavigationBar } = data;
-                const { workPages, personPages } = contentfulNavigationBar;
+                const { logo, logoHover, firstName, middleName, lastName, workPages, personPages } = contentfulNavigationBar;
         
                 const jsx = (
                     <ReactResizeDetector
@@ -204,69 +220,134 @@ class Layout extends React.Component {
                     refreshMode='throttle'
                     refreshRate={100}
                     >
-                            
-                        <div 
-                        className='RootDiv'>
                     
-                            <nav 
-                            className={this.state.classNameNav}
-                            >
-                                <button 
-                                className={this.state.classNameNavButton}
-                                onClick={this.handleClick}
-                                ></button>
-        
-                                <div
-                                className={this.state.classNameNavDiv}
-                                >
-                                    {workPages.map(page => (
-                                        <AniLink
-                                        to={`/${page.slug}`}
-                                        cover
-                                        direction='right'
-                                        bg='#7f3fbf'
-                                        duration={1}
-                                        key={page.id}
-                                        className={this.state.classNameNavA}
-                                        >
-        
-                                            {page.name}
-        
-                                        </AniLink>
-                                    ))}
-                                </div>
-        
-                                <div
-                                className={this.state.classNameNavDiv}
-                                >
-                                    {personPages.map(page => (
-                                        <AniLink
-                                        to={`/${page.slug}`}
-                                        cover
-                                        direction='right'
-                                        bg='#7f3fbf'
-                                        duration={1}
-                                        key={page.id}
-                                        className={this.state.classNameNavA}
-                                        >
-        
-                                            {page.name}
-        
-                                        </AniLink>
-                                    ))}
-                                </div>
-        
-                            </nav>
-                
-                        <div
-                        className={this.state.classNameHeaderMainWrapper}
+                        <nav 
+                        key='nav'
+                        className={this.state.classNameNav}
                         >
-        
-                            {this.props.children}
-        
-                        </div>
-        
+                            <button 
+                            className={this.state.classNameNavButton}
+                            onClick={this.handleClick}
+                            aria-label={this.state.buttonAriaLabel}
+                            >
+
+                                <img
+                                alt='' 
+                                src={logoHover.fixed.src}
+                                className={`NavButton_img`}
+                                />
+
+                                <img
+                                alt='' 
+                                src={logo.fixed.src}
+                                className={`NavButton_img NavButton_img___hover`}
+                                />
+
+                            </button>
+
+                            <div
+                            className={this.state.classNameNavDiv}
+                            >
+
+                                <AniLink
+                                to='/'
+                                cover
+                                direction='right'
+                                bg='#7f3fbf'
+                                duration={1}
+                                className='NavLogo'
+                                aria-label='Home'
+                                >
+                                    <img
+                                    alt='' 
+                                    src={logo.fixed.src}
+                                    className={`NavLogo_img`}
+                                    />
+
+                                    <img
+                                    alt='' 
+                                    src={logoHover.fixed.src}
+                                    className={`NavLogo_img NavLogo_img___hover`}
+                                    />
+
+                                    <p 
+                                    className='NavLogo_name NavLogo_name___first'
+                                    >
+
+                                        {firstName}
+
+                                    </p>
+
+                                    <p
+                                    className='NavLogo_name NavLogo_name___middle'
+                                    >
+                                    
+                                        {middleName}
+                                        
+                                    </p>
+
+                                    <p
+                                    className='NavLogo_name NavLogo_name___last'
+                                    >
+
+                                        {lastName}
+                                    
+                                    </p>
+
+                                </AniLink>
+                            </div>
+    
+                            <div
+                            className={this.state.classNameNavDiv}
+                            >
+                                {workPages.map(page => (
+                                    <AniLink
+                                    to={`/${page.slug}`}
+                                    cover
+                                    direction='right'
+                                    bg='#7f3fbf'
+                                    duration={1}
+                                    key={page.id}
+                                    className='NavA'
+                                    >
+    
+                                        {page.name}
+    
+                                    </AniLink>
+                                ))}
+                            </div>
+    
+                            <div
+                            className={this.state.classNameNavDiv}
+                            >
+
+                                {personPages.map(page => (
+                                    <AniLink
+                                    to={`/${page.slug}`}
+                                    cover
+                                    direction='right'
+                                    bg='#7f3fbf'
+                                    duration={1}
+                                    key={page.id}
+                                    className='NavA'
+                                    >
+    
+                                        {page.name}
+    
+                                    </AniLink>
+                                ))}
+                            </div>
+                        </nav>
+            
+                    <div
+                    key='header-and-main'
+                    className={this.state.classNameHeaderMainWrapper}
+                    >
+    
+                        {this.props.children}
+    
                     </div>
+        
                 </ReactResizeDetector>
         
                 );
@@ -280,4 +361,3 @@ class Layout extends React.Component {
 };
 
 export default Layout;
-

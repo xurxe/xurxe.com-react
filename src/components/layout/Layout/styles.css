@@ -1,23 +1,23 @@
 :root {
-    --purple95: hsl(270, 50%, 95%);
-    --purple90: hsl(270, 50%, 90%);
-    --purple85: hsl(270, 50%, 85%);
-    --purple80: hsl(270, 50%, 80%);
-    --purple75: hsl(270, 50%, 75%);
-    --purple70: hsl(270, 50%, 70%);
-    --purple65: hsl(270, 50%, 65%);
-    --purple60: hsl(270, 50%, 60%);
-    --purple55: hsl(270, 50%, 55%);
-    --purple50: hsl(270, 50%, 50%);
-    --purple45: hsl(270, 50%, 45%);
-    --purple40: hsl(270, 50%, 40%);
-    --purple35: hsl(270, 50%, 35%);
-    --purple30: hsl(270, 50%, 30%);
-    --purple25: hsl(270, 50%, 25%);
-    --purple20: hsl(270, 50%, 20%);
-    --purple15: hsl(270, 50%, 15%);
-    --purple10: hsl(270, 50%, 10%);
-    --purple05: hsl(270, 50%, 05%);
+    --purple95: hsl(274, 50%, 95%);
+    --purple90: hsl(274, 50%, 90%);
+    --purple85: hsl(274, 50%, 85%);
+    --purple80: hsl(274, 50%, 80%);
+    --purple75: hsl(274, 50%, 75%);
+    --purple70: hsl(274, 50%, 70%);
+    --purple65: hsl(274, 50%, 65%);
+    --purple60: hsl(274, 50%, 60%);
+    --purple55: hsl(274, 50%, 55%);
+    --purple50: hsl(274, 50%, 50%);
+    --purple45: hsl(274, 50%, 45%);
+    --purple40: hsl(274, 50%, 40%);
+    --purple35: hsl(274, 50%, 35%);
+    --purple30: hsl(274, 50%, 30%);
+    --purple25: hsl(274, 50%, 25%);
+    --purple20: hsl(274, 50%, 20%);
+    --purple15: hsl(274, 50%, 15%);
+    --purple10: hsl(274, 50%, 10%);
+    --purple05: hsl(274, 50%, 05%);
 }
 
 html {
@@ -95,15 +95,9 @@ em {
     }
 }
 
-.HeaderMainWrapper___widePadding {
-    padding: 3rem 3rem 3rem 14rem;
-    transition: 1s cubic-bezier(0.19, 1, 0.22, 1);
-}
 
-.HeaderMainWrapper___narrowPadding {
-    padding: 1rem 1rem 1rem 3rem;
-    transition: 1s cubic-bezier(0.19, 1, 0.22, 1);
-}
+
+
 
 .Nav {
     background: var(--purple50);
@@ -132,13 +126,146 @@ em {
 
 
 
-.Nav_button {
-    background: white;
+.NavButton {
+    background: none;
     border: none;
-    height: 2rem;
     outline: none;
+    position: relative;
+}
+
+.NavButton_img {
     width: 2rem;
 }
+
+.NavButton_img___hover {
+    opacity: 0;
+    position: absolute;
+    left: 0;
+    transition: opacity 1s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.NavButton:hover .NavButton_img___hover {
+    opacity: 1;
+    transition: opacity 1s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.NavButton:focus .NavButton_img___hover {
+    opacity: 1;
+    transition: opacity 1s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+
+
+
+.NavDiv {
+    padding-bottom: 2rem;
+}
+
+.NavDiv___untucked {
+    text-align: center;
+}
+
+
+
+
+.NavLogo {
+    position: relative;
+    text-decoration: none;
+}
+
+.NavLogo_img {
+    padding: 1.5rem 1.5rem 0;
+}
+
+.NavLogo_img___hover {
+    opacity: 0;
+    position: absolute;
+    left: 0;
+    transition: opacity 1s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.NavLogo:hover .NavLogo_img___hover {
+    opacity: 1;
+    transition: opacity 1s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.NavLogo:focus .NavLogo_img___hover {
+    opacity: 1;
+    transition: opacity 1s cubic-bezier(0.19, 1, 0.22, 1);
+    outline: none;
+}
+
+.NavLogo_name {
+    color: white;
+    font-family: 'Roboto Mono', monospace;
+    line-height: initial;
+    margin: 0;
+    padding: 0 1.5rem 0;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    -o-font-smoothing: antialiased;
+}
+
+.NavLogo_name___first{
+    font-size: 2.1rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+}
+
+.NavLogo_name___middle {
+    font-size: 2.1rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+}
+
+.NavLogo_name___last {
+    font-size: 1.4rem;
+    letter-spacing: 0.4em;
+    text-transform: lowercase;
+}
+
+
+
+
+.NavA {
+    color: white;
+    display: block;
+    letter-spacing: 0.2em;
+    padding: 0.2rem 1.5rem 0.3rem;
+    text-decoration: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    -o-font-smoothing: antialiased;
+    transition: 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.NavA:hover {
+    color: var(--purple50);
+    background: white;
+    transition: 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+    -webkit-font-smoothing: auto;
+    -moz-font-smoothing: auto;
+    -moz-osx-font-smoothing: auto;
+    -o-font-smoothing: auto;
+}
+
+.NavA:focus {
+    background: white;
+    color: var(--purple);
+    outline: none;
+    transition: 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+    -webkit-font-smoothing: auto;
+    -moz-font-smoothing: auto;
+    -moz-osx-font-smoothing: auto;
+    -o-font-smoothing: auto;
+}
+
+
+
 
 .displayBlock {
     display: block;
@@ -160,45 +287,22 @@ em {
 
 
 
-.NavA {
-    color: white;
-    display: block;
-    letter-spacing: 0.2em;
-    padding: 0.2rem 1.5rem 0.3rem;
-    text-decoration: none;
-    text-rendering: optimizeLegibility;
-    -webkit-font-smoothing: antialiased;
-    -moz-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    -o-font-smoothing: antialiased;
-    transition: 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+
+
+.HeaderMainWrapper___desktop {
+    padding: 3rem 3rem 3rem 14rem;
 }
 
-.NavA:hover {
-    color: var(--purple);
-    background: white;
-    transition: 0.5s cubic-bezier(0.19, 1, 0.22, 1);
-    -webkit-font-smoothing: auto;
-    -moz-font-smoothing: auto;
-    -moz-osx-font-smoothing: auto;
-    -o-font-smoothing: auto;
+.HeaderMainWrapper___mobile {
+    padding: 1rem 1rem 1rem 3rem;
 }
 
-.NavA:focus {
-    background: white;
-    color: var(--purple);
-    outline: none;
-    transition: 0.5s cubic-bezier(0.19, 1, 0.22, 1);
-    -webkit-font-smoothing: auto;
-    -moz-font-smoothing: auto;
-    -moz-osx-font-smoothing: auto;
-    -o-font-smoothing: auto;
+.HeaderMainWrapper___widePadding {
+    padding: 3rem 3rem 3rem 14rem;
+    transition: 1s cubic-bezier(0.19, 1, 0.22, 1);
 }
 
-.NavA___desktop {
-    text-align: left;
-}
-
-.NavA___mobile {
-    text-align: center;
+.HeaderMainWrapper___narrowPadding {
+    padding: 1rem 1rem 1rem 3rem;
+    transition: 1s cubic-bezier(0.19, 1, 0.22, 1);
 }

@@ -19,10 +19,12 @@ const IndexPage = ({ data }) => {
             <Helmet></Helmet>
 
             <Header
+            key={header.id}
             html={header.childMarkdownRemark.html}
             ></Header>
  
             <Main
+            key={main.id}
             page='index'
             html={main.childMarkdownRemark.html}
             entries={entries}
@@ -41,11 +43,13 @@ query {
     contentfulIndex {
         name
         header {
+            id
             childMarkdownRemark {
                 html
             }
         }
         main {
+            id
             childMarkdownRemark {
                 html
             }
