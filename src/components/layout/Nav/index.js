@@ -1,5 +1,6 @@
 import React from 'react';
-import { StaticQuery, graphql, Link } from 'gatsby';
+import { StaticQuery, graphql } from 'gatsby';
+import AniLink from 'gatsby-plugin-transition-link/AniLink';
 
 import './styles.css';
 
@@ -41,15 +42,19 @@ const Nav = ({ children, classNameNav, classNameNavDiv, classNameNavA}) => {
                     className={classNameNavDiv}
                     >
                         {workPages.map(page => (
-                            <Link
+                            <AniLink
                             key={page.id}
                             to={`/${page.slug}`}
                             className={classNameNavA}
+                            cover
+                            direction='right'
+                            bg='#7f3fbf'
+                            duration={1.5}
                             >
 
                                 {page.name}
 
-                            </Link>
+                            </AniLink>
                         ))}
                     </div>
 
@@ -57,15 +62,19 @@ const Nav = ({ children, classNameNav, classNameNavDiv, classNameNavA}) => {
                     className={classNameNavDiv}
                     >
                         {personPages.map(page => (
-                            <Link
+                            <AniLink
                             key={page.id}
                             to={`/${page.slug}`}
                             className={classNameNavA}
+                            cover
+                            direction='right'
+                            bg='#7f3fbf'
+                            duration={1.5}
                             >
 
                                 {page.name}
 
-                            </Link>
+                            </AniLink>
                         ))}
                     </div>
     

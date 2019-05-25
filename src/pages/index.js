@@ -1,7 +1,7 @@
 import React from "react";
 import { graphql } from 'gatsby';
 
-import BodyDiv from '../components/layout/BodyDiv';
+import Layout from '../components/layout/Layout';
 import Header from '../components/layout/Header';
 import Main from '../components/layout/Main';
 
@@ -14,7 +14,7 @@ const IndexPage = ({ data }) => {
     const entries = allContentfulCreation.edges;
 
     const jsx = (
-        <BodyDiv>
+        <Layout>
 
             <Helmet></Helmet>
 
@@ -28,7 +28,7 @@ const IndexPage = ({ data }) => {
             entries={entries}
             ></Main>
             
-        </BodyDiv>
+        </Layout>
     );
 
     return jsx;

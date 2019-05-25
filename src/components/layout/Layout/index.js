@@ -5,7 +5,7 @@ import './styles.css';
 
 import Nav from '../Nav';
 
-class RootDiv extends React.Component {
+class Layout extends React.Component {
 
     state = {
         desktop: true,
@@ -215,4 +215,4 @@ class RootDiv extends React.Component {
     
 };
 
-export default RootDiv;
+export default Layout;

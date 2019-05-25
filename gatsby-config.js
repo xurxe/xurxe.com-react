@@ -26,5 +26,6 @@ module.exports = {
                 postCssPlugins: [require(`autoprefixer`)],
             },
         },
+        `gatsby-plugin-transition-link`,
     ],
 }
