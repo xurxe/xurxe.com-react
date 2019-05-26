@@ -9,23 +9,16 @@ const Email = (props) => {
     const { id, name, address, fontAwesomeIcon } = entry;
 
     const jsx = (
-        <div 
+        <a 
         key={id}
+        href={`mailto: ${address}`}
         className='Entry Entry___email'
         >
 
+            {Parser(fontAwesomeIcon)}
+            {name}
 
-            <a 
-            href={`mailto: ${address}`}
-            className='EmailA'
-            >
-
-                {Parser(fontAwesomeIcon)}
-                {name}
-
-            </a>
-
-        </div>
+        </a>
     );
 
     return jsx;

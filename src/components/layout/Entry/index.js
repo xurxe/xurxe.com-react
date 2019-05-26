@@ -5,9 +5,10 @@ import './styles.css';
 import SkillCategory from '../../entries/SkillCategory';
 import Email from '../../entries/Email';
 import SocialMediaProfile from '../../entries/SocialMediaProfile';
+import Creation from '../../entries/Creation';
 
 
-const EntryDiv = ({ entry }) => {
+const Entry = ({ entry }) => {
 
     const { __typename } = entry;
 
@@ -56,18 +57,13 @@ const EntryDiv = ({ entry }) => {
     else {
 
         jsx = (
-            <div 
-            key={entry.node.id}
-            className='Entry'
-            >
-    
-                <p>{entry.node.title}</p>
-    
-            </div>
+            <Creation
+            entry={entry}
+            ></Creation>
         );
     }
 
     return jsx;
 };
 
-export default EntryDiv;
+export default Entry;

@@ -9,9 +9,8 @@ import Main from '../components/layout/Main';
 
 const IndexPage = ({ data }) => {
 
-    const { contentfulIndex, allContentfulCreation } = data;
-    const { header, main } = contentfulIndex;
-    const entries = allContentfulCreation.edges;
+    const { contentfulIndex } = data;
+    const { header, main, entries } = contentfulIndex;
 
     const jsx = (
         <BodyDiv>
@@ -54,12 +53,21 @@ query {
                 html
             }
         }
-    }
-    allContentfulCreation {
-        edges {
-            node {
+        entries {
+            id
+            title
+            slug
+            coverImage {
                 id
-                title
+                fluid (quality: 100) {
+                    base64
+                    aspectRatio
+                    src
+                    srcSet
+                    srcWebp
+                    srcSetWebp
+                    sizes
+                }
             }
         }
     }

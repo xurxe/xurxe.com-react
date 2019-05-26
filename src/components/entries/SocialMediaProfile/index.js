@@ -9,25 +9,21 @@ const SocialMediaProfile = (props) => {
     const { id, name, profileUrl, fontAwesomeIcon } = entry;
 
     const jsx = (
-        <div 
+
+        <a 
         key={id}
+        href={profileUrl}
+        target='_blank'
+        rel='noopener noreferrer'
         className='Entry Entry___socialMediaProfile'
         >
 
-            <a 
-            href={profileUrl}
-            target='_blank'
-            rel='noopener noreferrer'
-            className='SocialMediaProfileA'
-            >
+            {Parser(fontAwesomeIcon)}
 
-                {Parser(fontAwesomeIcon)}
+            {name}
 
-                {name}
+        </a>
 
-            </a>
-
-        </div>
     );
 
     return jsx;
