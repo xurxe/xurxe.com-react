@@ -6,7 +6,8 @@ const Component = () => {
 
     const jsx = (
         <div
-        className='Block_element___modifier'>
+        className='Block_element___modifier'
+        >
 
         </div>
     );

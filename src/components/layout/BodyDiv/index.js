@@ -5,7 +5,7 @@ import AniLink from 'gatsby-plugin-transition-link/AniLink';
 
 import './styles.css';
 
-class Layout extends React.Component {
+class BodyDiv extends React.Component {
 
     state = {
         desktop: true,
@@ -360,4 +360,4 @@ class Layout extends React.Component {
     
 };
 
-export default Layout;
+export default BodyDiv;

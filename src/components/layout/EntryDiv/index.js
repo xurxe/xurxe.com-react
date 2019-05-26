@@ -3,6 +3,9 @@ import React from 'react';
 import './styles.css';
 
 import SkillCategory from '../../entries/SkillCategory';
+import Email from '../../entries/Email';
+import SocialMediaProfile from '../../entries/SocialMediaProfile';
+
 
 const EntryDiv = ({ entry }) => {
 
@@ -16,6 +19,24 @@ const EntryDiv = ({ entry }) => {
             <SkillCategory
             entry={entry}
             ></SkillCategory>
+        );
+    }
+
+    else if (__typename === 'ContentfulEmail') {
+
+        jsx = (
+            <Email
+            entry={entry}
+            ></Email>
+        );
+    }
+
+    else if (__typename === 'ContentfulSocialMediaProfile') {
+
+        jsx = (
+            <SocialMediaProfile
+            entry={entry}
+            ></SocialMediaProfile>
         );
     }
 

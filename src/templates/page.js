@@ -1,17 +1,21 @@
 import React from "react";
 import { graphql } from 'gatsby';
 
-import Layout from '../components/layout/Layout';
+import Helmet from '../components/Helmet';
+
+import BodyDiv from '../components/layout/BodyDiv';
 import Header from '../components/layout/Header';
 import Main from '../components/layout/Main';
-
 
 const Page = ({ data }) => {
     const { contentfulPage } = data;
     const { slug, header, main, entries } = contentfulPage;
 
     const jsx = (
-        <Layout>
+        <BodyDiv>
+
+            <Helmet></Helmet>
+
             <Header
             html={header.childMarkdownRemark.html}
             ></Header>
@@ -27,7 +31,7 @@ const Page = ({ data }) => {
             entries={entries}
             ></Main>}
             
-        </Layout>
+        </BodyDiv>
     );
 
     return jsx;
@@ -62,6 +66,18 @@ query($slug: String!){
                     name
                     level
                 }
+            }
+            ... on ContentfulEmail {
+                id
+                name
+                address
+                fontAwesomeIcon
+            }
+            ... on ContentfulSocialMediaProfile {
+                id
+                name
+                profileUrl
+                fontAwesomeIcon
             }
         }
     }

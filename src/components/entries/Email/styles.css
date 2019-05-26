@@ -1,0 +1,28 @@
+.EntryDiv___ContentfulEmail {
+    text-decoration: none;
+}
+
+.EmailA {
+    align-items: center;
+    color: var(--purple10);
+    display: flex;
+    text-decoration: none;
+}
+
+.EmailA i {
+    background: white;
+    border-radius: 2px;
+    color: var(--purple50);
+    font-size: 1.5rem;
+    line-height: 2rem;
+    margin: 0.25rem 0.5rem 0.25rem 0;
+    text-align: center;
+    transition: 1s cubic-bezier(0.19, 1, 0.22, 1);
+    width: 2rem;
+}
+
+.EmailA:hover i {
+    background: var(--purple50);
+    color: white;
+    transition: 1s cubic-bezier(0.19, 1, 0.22, 1);
+}

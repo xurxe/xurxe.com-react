@@ -11,7 +11,8 @@ const SkillCategory = ({ entry }) => {
     const jsx = (
         <div 
         key={id}
-        className='Entry Entry___skillCategory'>
+        className='Entry Entry___skillCategory'
+        >
 
             <h3>{name}</h3>
             {skills.map(skill => 

@@ -1,11 +1,11 @@
 import React from "react";
 import { graphql } from 'gatsby';
 
-import Layout from '../components/layout/Layout';
+import Helmet from '../components/Helmet';
+
+import BodyDiv from '../components/layout/BodyDiv';
 import Header from '../components/layout/Header';
 import Main from '../components/layout/Main';
-
-import Helmet from '../components/Helmet';
 
 const IndexPage = ({ data }) => {
 
@@ -14,7 +14,7 @@ const IndexPage = ({ data }) => {
     const entries = allContentfulCreation.edges;
 
     const jsx = (
-        <Layout>
+        <BodyDiv>
 
             <Helmet></Helmet>
 
@@ -30,7 +30,7 @@ const IndexPage = ({ data }) => {
             entries={entries}
             ></Main>
             
-        </Layout>
+        </BodyDiv>
     );
 
     return jsx;
