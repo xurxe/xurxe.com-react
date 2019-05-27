@@ -1,4 +1,4 @@
-.Entry___email {
+.Email {
     text-decoration: none;
     align-items: center;
     color: var(--purple10);
@@ -6,7 +6,7 @@
     text-decoration: none;
 }
 
-.Entry___email i {
+.Email i {
     background: white;
     border-radius: 2px;
     color: var(--purple50);
@@ -18,7 +18,7 @@
     width: 2rem;
 }
 
-.Entry___email:hover i {
+.Email:hover i {
     background: var(--purple50);
     color: white;
     transition: 1s cubic-bezier(0.19, 1, 0.22, 1);

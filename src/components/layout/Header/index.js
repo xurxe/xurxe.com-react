@@ -3,14 +3,14 @@ import Parser from 'html-react-parser';
 
 import './styles.css';
 
-const Header = ({ html }) => {
+const Header = ({ headerHtml }) => {
 
     const jsx = (
         <header 
         className='Header'
         >
 
-        {Parser(html)}
+        {Parser(headerHtml)}
 
         </header>
     );

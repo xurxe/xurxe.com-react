@@ -15,7 +15,7 @@ const SocialMediaProfile = (props) => {
         href={profileUrl}
         target='_blank'
         rel='noopener noreferrer'
-        className='Entry Entry___socialMediaProfile'
+        className='Entry SocialMediaProfile'
         >
 
             {Parser(fontAwesomeIcon)}

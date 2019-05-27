@@ -5,6 +5,10 @@ import AniLink from 'gatsby-plugin-transition-link/AniLink';
 
 import './styles.css';
 
+import Helmet from '../../Helmet';
+import Header from '../Header';
+import Main from '../Main';
+
 class BodyDiv extends React.Component {
 
     state = {
@@ -14,7 +18,8 @@ class BodyDiv extends React.Component {
         classNameNav: 'Nav',
         classNameNavButton: 'NavButton',
         classNameNavDiv: 'NavDiv',
-        classNameHeaderMainWrapper: 'HeaderMainWrapper___desktop',
+        classNameHeaderMainWrapper: 'HeaderMainWrapper HeaderMainWrapper___desktop',
+        creationGridColumns: 1,
     };
 
     renderDesktop = () => {
@@ -22,7 +27,7 @@ class BodyDiv extends React.Component {
             classNameNav: 'Nav Nav___desktop',
             classNameNavButton: 'NavButton displayNone invisible',
             classNameNavDiv: 'NavDiv displayBlock visible',
-            classNameHeaderMainWrapper: 'HeaderMainWrapper___desktop',
+            classNameHeaderMainWrapper: 'HeaderMainWrapper HeaderMainWrapper___desktop',
         }));
     };
 
@@ -32,11 +37,12 @@ class BodyDiv extends React.Component {
             classNameNav: 'Nav Nav___tucked',
             classNameNavButton: 'NavButton displayBlock visible',
             classNameNavDiv: 'NavDiv displayNone invisible',
-            classNameHeaderMainWrapper: ' HeaderMainWrapper___mobile',
+            classNameHeaderMainWrapper: 'HeaderMainWrapper HeaderMainWrapper___mobile',
         }));
     };
 
     componentDidMount = () => {
+
         if (window.matchMedia('(max-width: 600px)').matches) {
             this.renderMobile();
         }
@@ -57,7 +63,7 @@ class BodyDiv extends React.Component {
                 classNameNav: 'Nav Nav___tucked',
                 classNameNavButton: 'NavButton displayBlock invisible',
                 classNameNavDiv: 'NavDiv displayNone invisible',
-                classNameHeaderMainWrapper: 'HeaderMainWrapper___narrowPadding',
+                classNameHeaderMainWrapper: 'HeaderMainWrapper HeaderMainWrapper___narrowPadding',
             }));
         }, 500);
 
@@ -79,7 +85,7 @@ class BodyDiv extends React.Component {
             this.setState(() => ({
                 classNameNav: 'Nav Nav___desktop',
                 classNameNavButton: 'NavButton displayNone invisible',
-                classNameHeaderMainWrapper: 'HeaderMainWrapper___widePadding',
+                classNameHeaderMainWrapper: 'HeaderMainWrapper HeaderMainWrapper___widePadding',
             }));
         }, 500);
 
@@ -121,6 +127,7 @@ class BodyDiv extends React.Component {
     };
 
     handleWindowResize = () => {
+
         if (
             this.state.desktop
             && window.matchMedia('(max-width: 600px)').matches
@@ -209,18 +216,19 @@ class BodyDiv extends React.Component {
                 }   
                 `
             }
-            render={data => {
+            render={(data) => {
                 const { contentfulNavigationBar } = data;
                 const { logo, logoHover, firstName, middleName, lastName, workPages, personPages } = contentfulNavigationBar;
-        
+
                 const jsx = (
                     <ReactResizeDetector
                     handleWidth
+                    width={this.width}
                     onResize={this.handleWindowResize}
                     refreshMode='throttle'
                     refreshRate={100}
                     >
-                    
+
                         <nav 
                         key='nav'
                         className={this.state.classNameNav}
@@ -254,7 +262,6 @@ class BodyDiv extends React.Component {
                                 cover
                                 direction='right'
                                 bg='#7f3fbf'
-                                duration={1}
                                 className='NavLogo'
                                 aria-label='Home'
                                 >
@@ -306,7 +313,6 @@ class BodyDiv extends React.Component {
                                     cover
                                     direction='right'
                                     bg='#7f3fbf'
-                                    duration={1}
                                     key={page.id}
                                     className='NavA'
                                     >
@@ -327,7 +333,6 @@ class BodyDiv extends React.Component {
                                     cover
                                     direction='right'
                                     bg='#7f3fbf'
-                                    duration={1}
                                     key={page.id}
                                     className='NavA'
                                     >
@@ -339,16 +344,25 @@ class BodyDiv extends React.Component {
                             </div>
                         </nav>
             
-                    <div
-                    key='header-and-main'
-                    className={this.state.classNameHeaderMainWrapper}
-                    >
-    
-                        {this.props.children}
-    
-                    </div>
+                        <div
+                        key='header-and-main'
+                        className={this.state.classNameHeaderMainWrapper}
+                        >
         
-                </ReactResizeDetector>
+                            <Helmet></Helmet>
+
+                            <Header
+                            headerHtml={this.props.headerHtml}
+                            ></Header>
+
+                            <Main
+                            page={this.props.page}
+                            mainHtml={this.props.mainHtml}
+                            entries={this.props.entries}
+                            ></Main>      
+                        </div>
+            
+                    </ReactResizeDetector>
         
                 );
         

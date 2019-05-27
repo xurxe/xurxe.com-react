@@ -1,5 +1,5 @@
-.Entry___creation {
-    background-color: var(--purple90);
+.Creation {
+    background-color: var(--purple95);
     color: var(--purple10);
     display: block;
     height: 300px;
@@ -9,13 +9,13 @@
     width: 300px;
 }
 
-.Entry___creation:hover {
-    background-color: var(--purple80);
+.Creation:hover {
+    background-color: var(--purple85);
     transition: 1s cubic-bezier(0.19, 1, 0.22, 1);
 }
 
-.Entry___creation:focus {
-    background-color: var(--purple80);
+.Creation:focus {
+    background-color: var(--purple85);
     outline: none;
     transition: 1s cubic-bezier(0.19, 1, 0.22, 1);
 }

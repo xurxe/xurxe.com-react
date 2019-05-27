@@ -3836,6 +3836,11 @@ enquire.js@^2.1.1:
   resolved "https://registry.yarnpkg.com/enquire.js/-/enquire.js-2.1.6.tgz#3e8780c9b8b835084c3f60e166dbc3c2a3c89814"
   integrity sha1-PoeAybi4NQhMP2DhZtvDwqPImBQ=
 
+enquire@^0.0.2:
+  version "0.0.2"
+  resolved "https://registry.yarnpkg.com/enquire/-/enquire-0.0.2.tgz#e92389cd80224971700e4fc8bac8129c75bf8661"
+  integrity sha1-6SOJzYAiSXFwDk/IusgSnHW/hmE=
+
 entities@^1.1.1, entities@~1.1.1:
   version "1.1.2"
   resolved "https://registry.yarnpkg.com/entities/-/entities-1.1.2.tgz#bdfa735299664dfafd34529ed4f8522a275fea56"

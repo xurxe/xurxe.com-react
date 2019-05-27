@@ -6,6 +6,7 @@
   "author": "Kyle Mathews <mathews.kyle@gmail.com>",
   "dependencies": {
     "add": "^2.0.6",
+    "enquire": "^0.0.2",
     "gatsby": "^2.7.1",
     "gatsby-image": "^2.1.0",
     "gatsby-plugin-manifest": "^2.1.1",

@@ -12,12 +12,13 @@ const Creation = (props) => {
         <Link 
         key={id}
         to={`/${slug}`}
-        className='Entry Entry___creation'
+        className='Entry Creation'
         >
             <Img
             alt=''
             fluid={coverImage.fluid}
             className='Creation_img'
+            fadeIn={false}
             ></Img>
 
             <p

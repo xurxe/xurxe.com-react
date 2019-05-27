@@ -12,7 +12,7 @@ const Email = (props) => {
         <a 
         key={id}
         href={`mailto: ${address}`}
-        className='Entry Entry___email'
+        className='Entry Email'
         >
 
             {Parser(fontAwesomeIcon)}

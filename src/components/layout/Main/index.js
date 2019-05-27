@@ -1,7 +1,7 @@
 import React from 'react';
 import Parser from 'html-react-parser';
+import { CSSGrid, layout } from 'react-stonecutter';
 import ReactResizeDetector from 'react-resize-detector';
-import { SpringGrid, makeResponsive } from 'react-stonecutter';
 
 import './styles.css';
 
@@ -10,46 +10,85 @@ import Entry from '../Entry';
 class Main extends React.Component {
 
     state = {
-        gridDefaultColumns: 3,
-    };
+        columns: 3,
+    }
 
-    componentDidMount = () => {
-        if (window.matchMedia('(max-width: 870px)').matches) {
+    calculateColumnsA = () => {
+        if (window.matchMedia('(max-width: 900px)').matches) {
             this.setState(() => ({
-                gridDefaultColumns: 1,
-            }));            
+                columns: 1,
+            }));
         }
 
-        else if (window.matchMedia('(max-width: 1170px)').matches) {
+        else if (window.matchMedia('(max-width: 1200px)').matches) {
             this.setState(() => ({
-                gridDefaultColumns: 2,
-            }));          
+                columns: 2,
+            }));
         }
 
-        else if (window.matchMedia('(max-width: 1470px)').matches) {
+        else if (window.matchMedia('(max-width: 1500px)').matches) {
             this.setState(() => ({
-                gridDefaultColumns: 3,
-            }));          
+                columns: 3,
+            }));
         }
 
-        else if (window.matchMedia('(max-width: 1770px)').matches) {
+        else if (window.matchMedia('(max-width: 1800px)').matches) {
             this.setState(() => ({
-                gridDefaultColumns: 4,
-            }));          
+                columns: 4,
+            }));
         }
 
         else {
             this.setState(() => ({
-                gridDefaultColumns: 5,
-            })); 
-        };
+                columns: 5,
+            }));
+        }
+    }
+
+    calculateColumnsB = () => {
+        if (window.matchMedia('(max-width: 960px)').matches) {
+            this.setState(() => ({
+                columns: 1,
+            }));
+        }
+
+        else if (window.matchMedia('(max-width: 1320px)').matches) {
+            this.setState(() => ({
+                columns: 2,
+            }));
+        }
+
+        else if (window.matchMedia('(max-width: 1680px)').matches) {
+            this.setState(() => ({
+                columns: 3,
+            }));
+        }
+
+        else {
+            this.setState(() => ({
+                columns: 4,
+            }));
+        }
+    }
+
+    componentDidMount = () => {
+        if (
+        this.props.page === 'index' 
+        || this.props.page === 'stillness'
+        || this.props.page === 'movement'
+        || this.props.page === 'interactivity'
+        ) {
+            this.calculateColumnsA();
+        }
+
+        else if (this.props.page === 'skills') {
+            this.calculateColumnsA();
+        }
     };
 
     render() {
 
-        const { page, html, entries } = this.props;
-
-        const Grid = makeResponsive(SpringGrid, { maxWidth: 1920, minPadding: 250, defaultColumns: this.state.gridDefaultColumns})
+        const { page, mainHtml, entries } = this.props;
 
         let jsx;
 
@@ -59,57 +98,105 @@ class Main extends React.Component {
         || page === 'movement'
         || page === 'interactivity'
         ) {
+
             jsx = (
-    
+
                 <ReactResizeDetector
                 handleWidth
+                width={this.width}
+                onResize={this.calculateColumnsA}
                 refreshMode='throttle'
                 refreshRate={100}
                 >
     
-                <main
-                className='Main'>
+                    <main
+                    className='Main'>
+            
+                        <div
+                        className='Main_text'
+                        >
+            
+                            {mainHtml && Parser(mainHtml)}
+            
+                        </div>
         
-                    <div
-                    className='Main_text'
-                    >
-        
-                        {html && Parser(html)}
-        
-                    </div>
+                        <CSSGrid
+                        columns={this.state.columns}
+                        columnWidth={300}
+                        itemHeight={300}
+                        gutterWidth={18}
+                        gutterHeight={18}
+                        layout={layout.simple}
+                        duration={500}
+                        className={`Main_entries Main_entries___${page}`}
+                        >
+                            {entries && entries.map(entry => 
+                                <div
+                                key={entry.id}
+                                >
+                                    <Entry 
+                                    entry={entry} 
+                                    ></Entry>
+                                </div>
+                            )}
+
+                        </CSSGrid>
+            
+                    </main>
+
+                </ReactResizeDetector>
+
+            );
+        }
+
+        else if (page === 'skills') {
+            
+            jsx = (
+
+                <ReactResizeDetector
+                handleWidth
+                width={this.width}
+                onResize={this.calculateColumnsB}
+                refreshMode='throttle'
+                refreshRate={100}
+                >
     
-                    <Grid
-                    columns={3}
-                    columnWidth={300}
-                    gutterWidth={18}
-                    gutterHeight={18}
-                    itemHeight={300}
-                    springConfig={{ stiffness: 170, damping: 26 }}
-                    className={`Main_entries Main_entries___${page}`}
-                    >
-                        {entries.map(entry => 
-                            <div
-                            key={entry.id}
-                            >
-                                <Entry 
-                                entry={entry} 
-                                ></Entry>
-                            </div>
-                        )}
-    
-                        {entries.map(entry => 
-                            <div
-                            key={entry.id}
-                            >
-                                <Entry 
-                                entry={entry} 
-                                ></Entry>
-                            </div>
-                        )}
-    
-                    </Grid>
+                    <main
+                    className='Main'>
+            
+                        <div
+                        className='Main_text'
+                        >
+            
+                            {mainHtml && Parser(mainHtml)}
+            
+                        </div>
         
-                </main>
+                        <CSSGrid
+                        columns={this.state.columns}
+                        columnWidth={360}
+                        gutterWidth={18}
+                        gutterHeight={18}
+                        layout={layout.pinterest}
+                        duration={500}
+                        className={`Main_entries Main_entries___${page}`}
+                        >
+
+                            {entries && entries.map((entry, index) => 
+                                <div
+                                key={entry.id}
+                                itemHeight={(300 - (index % 2) * 100)}
+                                >
+                                    <Entry 
+                                    entry={entry} 
+                                    ></Entry>
+                                </div>
+                            )}
+        
+                        </CSSGrid>
+            
+                    </main>
+
                 </ReactResizeDetector>
             );
         }
@@ -123,7 +210,7 @@ class Main extends React.Component {
                     className='Main_text'
                     >
         
-                        {html && Parser(html)}
+                        {mainHtml && Parser(mainHtml)}
         
                     </div>
         
