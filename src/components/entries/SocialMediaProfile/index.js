@@ -3,12 +3,9 @@ import Parser from 'html-react-parser';
 
 import './styles.css';
 
-const SocialMediaProfile = (props) => {
+const SocialMediaProfile = ({ entry }) => {
 
-    const { entry } = props;
     const { id, name, profileUrl, fontAwesomeIcon } = entry;
-
-    /* const cleanUrl = profileUrl.replace(/^^(?:https?:\/\/)?(?:www\.)?|(\/)$/ig, '') */
 
     const jsx = (
 

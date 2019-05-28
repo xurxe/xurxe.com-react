@@ -1,4 +1,4 @@
-.Creation {
+.CreationLink {
     background-color: var(--purple95);
     color: var(--purple10);
     display: block;
@@ -9,17 +9,32 @@
     width: 300px;
 }
 
-.Creation:hover {
-    background-color: var(--purple85);
+.CreationLink:hover {
+    background-color: var(--purple90);
     transition: 1s cubic-bezier(0.19, 1, 0.22, 1);
 }
 
-.Creation:focus {
+.CreationLink:focus {
     background-color: var(--purple85);
     outline: none;
     transition: 1s cubic-bezier(0.19, 1, 0.22, 1);
 }
 
-.Creation_p {
+.CreationLink_div {
     text-align: center;
+    margin-top: 1rem;
+}
+
+.CreationLink_p {
+    line-height: 1em;
+    margin: 0;
+}
+
+.CreationLink_p___title {
+    font-weight: bolder;
+}
+
+.CreationLink_p___description {
+    color: var(--purple40);
+    margin-top: 0.5rem;
 }

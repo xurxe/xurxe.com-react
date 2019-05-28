@@ -1,65 +1,65 @@
-.SkillDiv {
+.Skill {
     display: grid;
     grid-auto-flow: row;
     grid-template-columns: 9.5rem 10rem;
 }
 
 @media only screen and (max-width: 450px) {
-    .SkillDiv {
+    .Skill {
         grid-template-columns: 1fr;
     }
 }
 
-.SkillDiv_nameP {
+.Skill_nameP {
     margin: auto 0;
 }
 
 @media only screen and (max-width: 450px) {
-    .SkillDiv_nameP {
+    .Skill_nameP {
         margin-bottom: 2px;
     }
 }
 
 
-.SkillDiv_levelsDiv {
+.Skill_levelsDiv {
     display: flex;
 }
 
-.SkillDiv_levelDiv {
+.Skill_levelDiv {
     border: none;
     height: 1rem;
     width: 1rem;
     margin: 6px 4px 6px 0;
 }
 
-.SkillDiv_levelDiv___1 {
+.Skill_levelDiv___1 {
     background-color: var(--purple85)
 }
 
-.SkillDiv_levelDiv___2 {
+.Skill_levelDiv___2 {
     background-color: var(--purple80)
 }
 
-.SkillDiv_levelDiv___3 {
+.Skill_levelDiv___3 {
     background-color: var(--purple75)
 }
 
-.SkillDiv_levelDiv___4 {
+.Skill_levelDiv___4 {
     background-color: var(--purple70)
 }
 
-.SkillDiv_levelDiv___5 {
+.Skill_levelDiv___5 {
     background-color: var(--purple65)
 }
 
-.SkillDiv_levelDiv___6 {
+.Skill_levelDiv___6 {
     background-color: var(--purple60)
 }
 
-.SkillDiv_levelDiv___7 {
+.Skill_levelDiv___7 {
     background-color: var(--purple55)
 }
 
-.SkillDiv_levelDiv___8 {
+.Skill_levelDiv___8 {
     background-color: var(--purple50)
 }

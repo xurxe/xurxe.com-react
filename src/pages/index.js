@@ -41,6 +41,7 @@ query {
         entries {
             id
             title
+            description
             slug
             coverImage {
                 id

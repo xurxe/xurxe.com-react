@@ -56,10 +56,14 @@ class Main extends React.Component {
         
                     </div>
 
-                    {Entries && <Entries
-                    page={page}
-                    entries={entries}
-                    ></Entries>}
+                    <div
+                    className='Main_entries'
+                    >
+                        {Entries && <Entries
+                        page={page}
+                        entries={entries}
+                        ></Entries>}
+                    </div>
         
                 </main>
             );

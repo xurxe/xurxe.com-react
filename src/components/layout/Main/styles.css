@@ -1,18 +1,7 @@
-/* .Main_text {
+.Main_text {
     max-width: 35rem;
 }
 
-.Main_entries___skills {
-    display: grid;
-    grid-auto-flow: row;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: auto;
-    width: 100%;
+.Main_entries {
+    margin-top: 3rem;
 }
-
-@media only screen and (max-width: 950px) {
-    .Main_entries___skills {
-        grid-template-columns: 1fr;
-        grid-template-rows: auto;
-    }
-} */

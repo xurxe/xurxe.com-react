@@ -3,9 +3,8 @@ import Parser from 'html-react-parser';
 
 import './styles.css';
 
-const Email = (props) => {
+const Email = ({ entry }) => {
 
-    const { entry } = props;
     const { id, name, address, fontAwesomeIcon } = entry;
 
     const jsx = (

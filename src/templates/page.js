@@ -4,8 +4,24 @@ import { graphql } from 'gatsby';
 import BodyDiv from '../components/layout/BodyDiv';
 
 const Page = ({ data }) => {
-    const { contentfulPage } = data;
-    const { slug, header, main, entries } = contentfulPage;
+    const { contentfulPage, contentfulIndex } = data;
+    const { slug, header, main } = contentfulPage;
+
+    let entries;
+
+    if (
+        slug === 'stillness'
+        || slug === 'movement'
+        || slug === 'interactivity'
+    ) {
+        entries = contentfulIndex.entries.filter(
+            entry => entry.category === slug
+        )
+    }
+
+    else {
+        entries = contentfulPage.entries;
+    }
 
     const jsx = (
         <BodyDiv
@@ -55,11 +71,34 @@ query($slug: String!){
                 address
                 fontAwesomeIcon
             }
+
             ... on ContentfulSocialMediaProfile {
                 id
                 name
                 profileUrl
                 fontAwesomeIcon
+            }
+        }
+    }
+    contentfulIndex {
+        id
+        entries {
+            id
+            category
+            title
+            description
+            slug
+            coverImage {
+                id
+                fluid(quality: 100) {
+                    base64
+                    aspectRatio
+                    src
+                    srcSet
+                    srcWebp
+                    srcSetWebp
+                    sizes
+                }
             }
         }
     }

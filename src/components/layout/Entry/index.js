@@ -5,7 +5,7 @@ import './styles.css';
 import SkillCategory from '../../entries/SkillCategory';
 import Email from '../../entries/Email';
 import SocialMediaProfile from '../../entries/SocialMediaProfile';
-import Creation from '../../entries/Creation';
+import CreationLink from '../../entries/CreationLink';
 
 
 const Entry = ({ entry }) => {
@@ -57,9 +57,9 @@ const Entry = ({ entry }) => {
     else {
 
         jsx = (
-            <Creation
+            <CreationLink
             entry={entry}
-            ></Creation>
+            ></CreationLink>
         );
     }
 

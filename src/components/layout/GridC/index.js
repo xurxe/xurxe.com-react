@@ -63,7 +63,7 @@ class GridC extends React.Component {
                 gutterHeight={18}
                 layout={layout.simple}
                 duration={500}
-                className={`Main_entries Main_entries___${page}`}
+                className={`Grid___${page}`}
                 >
                     {entries && entries.map(entry => 
                         <div

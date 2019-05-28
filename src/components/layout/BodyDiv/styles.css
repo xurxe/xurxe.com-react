@@ -45,7 +45,7 @@ h2 {
     font-size: 30px;
     font-weight: normal;
     letter-spacing: 0.05em;
-    margin: 2em 0 1em;
+    margin: 1em 0 1em;
 }
 
 h3 {
@@ -172,6 +172,10 @@ em {
     text-decoration: none;
 }
 
+.NavLogo:focus {
+    outline: none;
+}
+
 .NavLogo_img {
     padding: 1.5rem 1.5rem 0;
 }
@@ -191,7 +195,6 @@ em {
 .NavLogo:focus .NavLogo_img___hover {
     opacity: 1;
     transition: opacity 1s cubic-bezier(0.19, 1, 0.22, 1);
-    outline: none;
 }
 
 .NavLogo_name {

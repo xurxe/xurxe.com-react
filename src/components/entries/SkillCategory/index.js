@@ -2,7 +2,7 @@ import React from 'react';
 
 import './styles.css';
 
-import SkillDiv from './SkillDiv';
+import Skill from './Skill';
 
 const SkillCategory = ({ entry }) => {
 
@@ -14,14 +14,17 @@ const SkillCategory = ({ entry }) => {
         className='Entry SkillCategory'
         >
 
-            <h3>{name}</h3>
-            {skills.map(skill => 
-                <SkillDiv
-                key={skill.id}
-                name={skill.name}
-                level={skill.level}
-                ></SkillDiv>
-            )}
+            <h3
+            className='H3___skills'
+            >{name}</h3>
+            <ul id={name}>
+                {skills.map(skill => 
+                    <Skill
+                    key={skill.id}
+                    skill={skill}
+                    ></Skill>
+                )}
+            </ul>
 
         </div>
     );

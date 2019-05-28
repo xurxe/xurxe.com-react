@@ -3,38 +3,40 @@ import Parser from 'html-react-parser';
 
 import './styles.css';
 
-const SkillDiv = ({ id, name, level }) => {
+const Skill = ({ skill }) => {
+
+    const { id, name, level } = skill;
 
     let html = '';
 
     for (let i = 0; i < level; i++) {
-        html += `<div class="SkillDiv_levelDiv SkillDiv_levelDiv___${i + 1}"></div>`
+        html += `<div class="Skill_levelDiv Skill_levelDiv___${i + 1}"></div>`
     };
 
     const jsx = (
-        <div
+        <li
         key={id}
-        className='SkillDiv'>
+        className='Skill'>
 
             <p
-            className='SkillDiv_nameP'
+            className='Skill_nameP'
             >
                 {name}
 
             </p>
 
             <div
-            className='SkillDiv_levelsDiv'
+            className='Skill_levelsDiv'
             >
 
                 {Parser(html)}
                 
             </div>
 
-        </div>
+        </li>
     );
 
     return jsx;
 };
 
-export default SkillDiv;
+export default Skill;
