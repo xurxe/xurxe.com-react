@@ -8,6 +8,8 @@ const SocialMediaProfile = (props) => {
     const { entry } = props;
     const { id, name, profileUrl, fontAwesomeIcon } = entry;
 
+    /* const cleanUrl = profileUrl.replace(/^^(?:https?:\/\/)?(?:www\.)?|(\/)$/ig, '') */
+
     const jsx = (
 
         <a 
@@ -19,7 +21,6 @@ const SocialMediaProfile = (props) => {
         >
 
             {Parser(fontAwesomeIcon)}
-
             {name}
 
         </a>

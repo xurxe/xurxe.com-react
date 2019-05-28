@@ -13,10 +13,11 @@ const Email = (props) => {
         key={id}
         href={`mailto: ${address}`}
         className='Entry Email'
+        aria-label={`Xurxe's ${name}`}
         >
 
             {Parser(fontAwesomeIcon)}
-            {name}
+            {address}
 
         </a>
     );
