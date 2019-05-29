@@ -11,7 +11,7 @@ const CreationLink = ({ entry }) => {
         <Link 
         key={id}
         to={`/${slug}`}
-        className='Entry CreationLink'
+        className='Entry CreationLink hvr-overline-from-left hvr-underline-from-left'
         >
             <Img
             alt=''
