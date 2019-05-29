@@ -11,6 +11,7 @@ import Main from '../Main';
 
 class BodyDiv extends React.Component {
 
+    // i use the state to manage the rendering of the navigation bar and the wrapper around the header and main
     state = {
         desktop: true,
         tucked: true,
@@ -19,17 +20,10 @@ class BodyDiv extends React.Component {
         classNameNavButton: 'NavButton',
         classNameNavDiv: 'NavDiv',
         classNameHeaderMainWrapper: 'HeaderMainWrapper HeaderMainWrapper___desktop',
-        creationGridColumns: 1,
     };
 
-    renderDesktop = () => {
-        this.setState(() => ({
-            classNameNav: 'Nav Nav___desktop',
-            classNameNavButton: 'NavButton displayNone invisible',
-            classNameNavDiv: 'NavDiv displayBlock visible',
-            classNameHeaderMainWrapper: 'HeaderMainWrapper HeaderMainWrapper___desktop',
-        }));
-    };
+    // on mount, if the screen size is under 600px, render mobile layout; otherwise, render desktop layout
+    componentDidMount = () => window.matchMedia('(max-width: 600px)').matches ? this.renderMobile() : this.renderDesktop();
 
     renderMobile = () => {
         this.setState(() => ({
@@ -41,18 +35,36 @@ class BodyDiv extends React.Component {
         }));
     };
 
-    componentDidMount = () => {
-
-        if (window.matchMedia('(max-width: 600px)').matches) {
-            this.renderMobile();
-        }
-
-        else {
-            this.renderDesktop();
-        };
+    renderDesktop = () => {
+        this.setState(() => ({
+            classNameNav: 'Nav Nav___desktop',
+            classNameNavButton: 'NavButton displayNone invisible',
+            classNameNavDiv: 'NavDiv displayBlock visible',
+            classNameHeaderMainWrapper: 'HeaderMainWrapper HeaderMainWrapper___desktop',
+        }));
     };
 
-    changeDesktopToTucked = () => {
+    // when the window resizes...
+    handleWindowResize = () => {
+
+        // if currently on desktop layout, and it's a small screen, transition to mobile layout
+        if (
+            this.state.desktop
+            && window.matchMedia('(max-width: 600px)').matches
+        ) {
+            this.changeDesktopToTucked();
+        }
+
+        // otherwise, if currently on mobile layout, transition to desktop layout
+        else if (
+            !this.state.desktop 
+            && !window.matchMedia('(max-width: 600px)').matches
+        ) {
+            this.changeTuckedToDesktop();
+        }
+    };
+
+    changeDesktopToMobile = () => {
         this.setState(() => ({
             desktop: false,
             classNameNavDiv: 'NavDiv displayBlock invisible',
@@ -74,11 +86,11 @@ class BodyDiv extends React.Component {
         }, 550);
     };
 
-    changeTuckedToDesktop = () => {
+    changeMobileToDesktop = () => {
         this.setState(() => ({
             desktop: true, 
             classNameNavButton: 'NavButton displayBlock invisible',
-            classNameNavDiv: 'NavDiv displayBlock invisible',
+            classNameNavDiv: 'NavDiv NavDiv___untucked displayBlock invisible',
         }));
 
         setTimeout(() => {
@@ -95,6 +107,9 @@ class BodyDiv extends React.Component {
             }));
         }, 700);
     };
+
+    // when you click on the button (which is only displayed on mobile), toggle tuck/untuck
+    handleClick = () => this.state.tucked ? this.untuck() : this.tuck();
 
     untuck = () => {
         this.setState(() => ({
@@ -126,55 +141,15 @@ class BodyDiv extends React.Component {
         }, 200);
     };
 
-    handleWindowResize = () => {
-
-        if (
-            this.state.desktop
-            && window.matchMedia('(max-width: 600px)').matches
-        ) {
-            this.changeDesktopToTucked();
-        }
-
-        else if (
-            !this.state.desktop 
-            && this.state.tucked
-            && !window.matchMedia('(max-width: 600px)').matches
-        ) {
-            this.changeTuckedToDesktop();
-        }
-
-        else if (
-            !this.state.desktop 
-            && !this.state.tucked
-            && !window.matchMedia('(max-width: 600px)').matches
-        ) {
-            this.tuck();
-
-            setTimeout(() => {
-                this.changeTuckedToDesktop();
-            }, 1000);
-        };
-    };
-
-    handleClick = () => {
-
-        if (this.state.tucked) {
-            this.untuck();
-        }
-
-        else {
-            this.tuck();
-        };
-    };
-
     render () {
-
         return (
+            // run static query to fetch navigation bar data
             <StaticQuery 
             query={
                 graphql`
                 query {
                     contentfulNavigationBar {
+                        id
                         logo {
                             id
                             fixed (quality: 100, width: 144, height: 144) {
@@ -218,9 +193,11 @@ class BodyDiv extends React.Component {
             }
             render={(data) => {
                 const { contentfulNavigationBar } = data;
-                const { logo, logoHover, firstName, middleName, lastName, workPages, personPages } = contentfulNavigationBar;
+                const { id, logo, logoHover, firstName, middleName, lastName, workPages, personPages } = contentfulNavigationBar;
 
                 const jsx = (
+
+                    // this component tracks window sizes, and calls the appropriate function
                     <ReactResizeDetector
                     handleWidth
                     width={this.width}
@@ -230,7 +207,7 @@ class BodyDiv extends React.Component {
                     >
 
                         <nav 
-                        key='nav'
+                        key={id}
                         className={this.state.classNameNav}
                         >
                             <button 
@@ -365,13 +342,11 @@ class BodyDiv extends React.Component {
                     </ReactResizeDetector>
         
                 );
-        
                 return jsx;
             }}
             />
         );
-    }
-    
+    } 
 };
 
 export default BodyDiv;
