@@ -32,9 +32,10 @@
     font-weight: bolder;
 }
 
-.CreationLink_p___description {
+.CreationLink_p___subtitle {
     color: var(--purple40);
-    margin-top: 0.5rem;
+    font-size: 0.8rem;
+    margin-top: 0.75rem;
 }
 
 

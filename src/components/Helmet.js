@@ -68,7 +68,7 @@ const HelmetComponent = (/* { title, description, keywords, image, url, slug } *
             /> */}
 
             <link 
-            href="https://fonts.googleapis.com/css?family=Roboto|Roboto+Mono" 
+            href="https://fonts.googleapis.com/css?family=Roboto|Roboto+Mono|Abhaya+Libre|Abril+Fatface|Cantata+One|Marko+One|Shrikhand|Yeseva+One|PT+Mono|Anonymous+Pro|Cutive+Mono|Inconsolata|Rakkas|Rhodium+Libre" 
             rel="stylesheet"
             />
 

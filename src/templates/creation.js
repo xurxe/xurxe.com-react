@@ -1,18 +1,29 @@
-/* import React from "react";
+import React from "react";
 import { graphql } from 'gatsby';
 
 import BodyDiv from '../components/layout/BodyDiv';
 
 const Creation = ({ data }) => {
     const { contentfulCreation } = data;
-    const { slug, header, main } = contentfulCreation;
+    const { title, subtitle, frontImage, onlinePresence, progress, roles, collaborators, text, creationChildren, backImage } = contentfulCreation;
+
+    const creation = {
+        frontImage: frontImage,
+        onlinePresence: onlinePresence,
+        progress: progress,
+        roles: roles,
+        collaborators: collaborators,
+        text: text,
+        creationChildren: creationChildren,
+        backImage: backImage,
+    }
 
     const jsx = (
         <BodyDiv
-        page={slug}
-        headerHtml={header.childMarkdownRemark.html}
-        mainHtml={main && main.childMarkdownRemark.html}
-        entries={entries}
+        page='Creation'
+        title={title}
+        subtitle={subtitle}
+        creation={creation}
         ></BodyDiv>
     );
 
@@ -23,46 +34,71 @@ export default Creation;
 
 export const query = graphql`
 query($slug: String!){ 
-	contentfulPage (id: { eq: $slug }){
+	contentfulCreation (id: { eq: $slug }){
         id
-        slug
-        header {
+        title
+        subtitle
+        frontImage {
+            fluid (maxWidth: 1200, quality: 100) {
+                base64
+                aspectRatio
+                src
+                srcSet
+                srcWebp
+                srcSetWebp
+                sizes
+            }
+        }
+        onlinePresence {
             id
+            name
+            url
+        }
+        progress
+        roles
+        collaborators {
+            id
+            name
+            url
+        }
+        text {
             childMarkdownRemark {
                 html
             }
         }
-        main {
+        creationChildren {
             id
-            childMarkdownRemark {
-                html
-            }
-        }
-        entries {
-            __typename
-            ... on ContentfulSkillCategory {
+            childTitle
+            childImage {
                 id
-                name
-                skills {
-                    id
-                    name
-                    level
+                fixed (width: 264, quality: 100){
+                    base64
+                    aspectRatio
+                    width
+                    height
+                    src
+                    srcSet
+                    srcWebp
+                    srcSetWebp
                 }
             }
-            ... on ContentfulEmail {
+            childOnlinePresence {
                 id
                 name
-                address
-                fontAwesomeIcon
+                url
             }
-
-            ... on ContentfulSocialMediaProfile {
-                id
-                name
-                profileUrl
-                fontAwesomeIcon
+        }
+        backImage {
+            fluid (maxWidth: 1200, quality: 100) {
+                base64
+                aspectRatio
+                src
+                srcSet
+                srcWebp
+                srcSetWebp
+                sizes
             }
         }
     }
 }
-` */
+`

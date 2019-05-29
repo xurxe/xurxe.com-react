@@ -5,7 +5,7 @@ import Img from 'gatsby-image';
 import './styles.css';
 
 const CreationLink = ({ entry }) => {
-    const { id, title, description, slug, coverImage} = entry;
+    const { id, title, subtitle, slug, frontImage} = entry;
 
     const jsx = (
         <Link 
@@ -15,7 +15,7 @@ const CreationLink = ({ entry }) => {
         >
             <Img
             alt=''
-            fluid={coverImage.fluid}
+            fixed={frontImage.fixed}
             className='CreationLink_img'
             fadeIn={false}
             ></Img>
@@ -31,9 +31,9 @@ const CreationLink = ({ entry }) => {
                 </p>
 
                 <p
-                className='CreationLink_p CreationLink_p___description'
+                className='CreationLink_p CreationLink_p___subtitle'
                 >
-                    {description} <br />
+                    {subtitle} <br />
                 </p>
 
             </div>

@@ -179,12 +179,12 @@ class BodyDiv extends React.Component {
                         lastName
                         workPages {
                             id
-                            name
+                            title
                             slug
                         }
                         personPages {
                             id
-                            name
+                            title
                             slug
                         }
                     }
@@ -294,7 +294,7 @@ class BodyDiv extends React.Component {
                                     className='NavA'
                                     >
     
-                                        {page.name}
+                                        {page.title}
     
                                     </AniLink>
                                 ))}
@@ -314,7 +314,7 @@ class BodyDiv extends React.Component {
                                     className='NavA'
                                     >
     
-                                        {page.name}
+                                        {page.title}
     
                                     </AniLink>
                                 ))}
@@ -329,13 +329,15 @@ class BodyDiv extends React.Component {
                             <Helmet></Helmet>
 
                             <Header
-                            headerHtml={this.props.headerHtml}
+                            title={this.props.title}
+                            subtitle={this.props.subtitle}
                             ></Header>
 
                             <Main
                             page={this.props.page}
                             mainHtml={this.props.mainHtml}
                             entries={this.props.entries}
+                            creation={this.props.creation}
                             ></Main>      
                         </div>
             

@@ -5,7 +5,7 @@ import BodyDiv from '../components/layout/BodyDiv';
 
 const Page = ({ data }) => {
     const { contentfulPage, contentfulIndex } = data;
-    const { slug, header, main } = contentfulPage;
+    const { slug, title, subtitle, main } = contentfulPage;
 
     let entries;
 
@@ -26,7 +26,8 @@ const Page = ({ data }) => {
     const jsx = (
         <BodyDiv
         page={slug}
-        headerHtml={header.childMarkdownRemark.html}
+        title={title}
+        subtitle={subtitle}
         mainHtml={main && main.childMarkdownRemark.html}
         entries={entries}
         ></BodyDiv>
@@ -42,12 +43,8 @@ query($slug: String!){
 	contentfulPage (id: { eq: $slug }){
         id
         slug
-        header {
-            id
-            childMarkdownRemark {
-                html
-            }
-        }
+        title
+        subtitle
         main {
             id
             childMarkdownRemark {
@@ -86,18 +83,19 @@ query($slug: String!){
             id
             category
             title
-            description
+            subtitle
             slug
-            coverImage {
+            frontImage {
                 id
-                fluid(quality: 100) {
+                fixed (width: 264, quality: 100){
                     base64
                     aspectRatio
+                    width
+                    height
                     src
                     srcSet
                     srcWebp
                     srcSetWebp
-                    sizes
                 }
             }
         }

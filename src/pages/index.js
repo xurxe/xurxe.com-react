@@ -6,12 +6,13 @@ import BodyDiv from '../components/layout/BodyDiv';
 const IndexPage = ({ data }) => {
 
     const { contentfulIndex } = data;
-    const { header, main, entries } = contentfulIndex;
+    const { title, subtitle, main, entries } = contentfulIndex;
 
     const jsx = (
         <BodyDiv
         page='index'
-        headerHtml={header.childMarkdownRemark.html}
+        title={title}
+        subtitle={subtitle}
         mainHtml={main && main.childMarkdownRemark.html}
         entries={entries}
         ></BodyDiv>
@@ -25,13 +26,8 @@ export default IndexPage;
 export const query = graphql`
 query {
     contentfulIndex {
-        name
-        header {
-            id
-            childMarkdownRemark {
-                html
-            }
-        }
+        title
+        subtitle
         main {
             id
             childMarkdownRemark {
@@ -41,18 +37,19 @@ query {
         entries {
             id
             title
-            description
+            subtitle
             slug
-            coverImage {
+            frontImage {
                 id
-                fluid (quality: 100) {
+                fixed (width: 264, quality: 100){
                     base64
                     aspectRatio
+                    width
+                    height
                     src
                     srcSet
                     srcWebp
                     srcSetWebp
-                    sizes
                 }
             }
         }

@@ -34,9 +34,9 @@ html {
 
 h1 {
     color: var(--purple50);
-    font-size: 110px;
+    font-family: 'Roboto Mono', serif;
+    font-size: 85px;
     font-weight: normal;
-    letter-spacing: 0.1em;
     margin-bottom: 0.25em;
 }
 
@@ -75,7 +75,7 @@ em {
 
 @media only screen and (min-width: 600px) and (max-width: 1000px) {
     h1 {
-        font-size: calc(40px + (110 - 40) * (100vw - 600px) / (1000 - 600));    
+        font-size: calc(40px + (85 - 40) * (100vw - 600px) / (1000 - 600));    
     }
 
     h2, strong {

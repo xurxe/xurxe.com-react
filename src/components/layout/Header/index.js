@@ -1,16 +1,16 @@
 import React from 'react';
-import Parser from 'html-react-parser';
 
 import './styles.css';
 
-const Header = ({ headerHtml }) => {
+const Header = ({ title, subtitle }) => {
 
     const jsx = (
         <header 
         className='Header'
         >
 
-        {Parser(headerHtml)}
+        <h1>{title}</h1>
+        <h2>{subtitle}</h2>
 
         </header>
     );

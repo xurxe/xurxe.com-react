@@ -65,8 +65,8 @@ class GridA extends React.Component {
                 columns={this.state.columns}
                 columnWidth={300}
                 itemHeight={300}
-                gutterWidth={18}
-                gutterHeight={18}
+                gutterWidth={27}
+                gutterHeight={27}
                 layout={layout.simple}
                 duration={500}
                 className={`Grid___${page}`}
