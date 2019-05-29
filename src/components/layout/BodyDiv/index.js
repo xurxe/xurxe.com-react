@@ -52,7 +52,7 @@ class BodyDiv extends React.Component {
             this.state.desktop
             && window.matchMedia('(max-width: 600px)').matches
         ) {
-            this.changeDesktopToTucked();
+            this.changeDesktopToMobile();
         }
 
         // otherwise, if currently on mobile layout, transition to desktop layout
@@ -60,7 +60,7 @@ class BodyDiv extends React.Component {
             !this.state.desktop 
             && !window.matchMedia('(max-width: 600px)').matches
         ) {
-            this.changeTuckedToDesktop();
+            this.changeMobileToDesktop();
         }
     };
 
