@@ -9,9 +9,7 @@ import GridC from '../GridC';
 
 class Main extends React.Component {
 
-    state = {
-        grid: undefined,
-    }
+    state = {grid: null}
 
     componentDidMount = () =>{
         if (
@@ -26,21 +24,16 @@ class Main extends React.Component {
         }
 
         else if (this.props.page === 'skills') {
-            this.setState(() => ({
-                grid: GridB,
-            })); 
+            this.setState(() => ({grid: GridB})); 
         }
 
         else if (this.props.page === 'contact') {
-            this.setState(() => ({
-                grid: GridC,
-            })); 
+            this.setState(() => ({grid: GridC})); 
         }
     }
 
     render() {
         const { page, mainHtml, entries, creation } = this.props;
-
         let jsx;
 
         if (entries) {
@@ -58,21 +51,20 @@ class Main extends React.Component {
         
                     </div>
 
-                    <div
+                    {Grid && <div
                     className='Main_grid'
                     >
-                        {Grid && <Grid
+                        <Grid
                         page={page}
                         entries={entries}
-                        ></Grid>}
-                    </div>
-        
+                        ></Grid>
+
+                    </div>}
                 </main>
             );
         }
 
         else if (creation) {
-
             const { frontImage, onlinePresence, progress, roles, collaborators, text, creationChildren, backImage } = creation;
             console.log(frontImage, onlinePresence, progress, roles, collaborators, text, creationChildren, backImage);
             
@@ -85,6 +77,22 @@ class Main extends React.Component {
                 </main>
             );
         }
+
+        else if (!entries && !creation) {
+            jsx = (
+                <main
+                className='Main Main_page'>
+        
+                    <div
+                    className='Main_text'
+                    >
+        
+                        {mainHtml && Parser(mainHtml)}
+        
+                    </div>
+                </main>
+            );
+        };
     
         return jsx;
     };
