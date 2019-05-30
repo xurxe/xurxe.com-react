@@ -1,11 +1,14 @@
 import React from 'react';
 import Parser from 'html-react-parser';
+import Img from 'gatsby-image';
 
 import './styles.css';
 
 import GridA from '../GridA';
 import GridB from '../GridB';
 import GridC from '../GridC';
+import OnlinePresence from '../../creation/OnlinePresence';
+
 
 class Main extends React.Component {
 
@@ -66,13 +69,60 @@ class Main extends React.Component {
 
         else if (creation) {
             const { frontImage, onlinePresence, progress, roles, collaborators, text, creationChildren, backImage } = creation;
-            console.log(frontImage, onlinePresence, progress, roles, collaborators, text, creationChildren, backImage);
             
             jsx = (
                 <main
                 className='Main Main_creation'>
 
+                <Img
+                fluid={frontImage.fluid}
+                className='FrontImage'
+                ></Img>
 
+                <h3>progress:</h3>
+                <p>{progress}</p>
+
+                <h3 htmlFor="roles">my roles:</h3>
+                <ul id="roles">
+                    {roles.map((role, index) => (
+                        <li
+                        key={index}
+                        >
+                            {role}
+                        </li>
+                    ))}
+                </ul>
+
+                {collaborators && 
+                <div>
+                    <h3 htmlFor="collaborators">my collaborators:</h3>
+                    <ul id="collaborators">
+                        {collaborators.map(collaborator => (
+                            <li
+                            key={collaborator.id}
+                            >
+                                <a 
+                                href={collaborator.url}
+                                target='_blank'
+                                rel='noopener noreferrer'
+                                >
+                                    {collaborator.name}
+                                </a>
+                            </li>
+                        ))}
+                    </ul>
+                </div>}
+
+                {OnlinePresence && <OnlinePresence
+                onlinePresence={onlinePresence}
+                ></OnlinePresence>}
+
+                {text && Parser(text.childMarkdownRemark.html)}
+
+                <Img
+                fluid={backImage.fluid}
+                className='BackImage'
+                ></Img>
 
                 </main>
             );
