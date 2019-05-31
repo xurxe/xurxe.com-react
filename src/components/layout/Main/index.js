@@ -7,7 +7,6 @@ import './styles.css';
 import GridA from '../GridA';
 import GridB from '../GridB';
 import GridC from '../GridC';
-import GridD from '../GridD';
 import OnlinePresence from '../../creation/OnlinePresence';
 
 class Main extends React.Component {
@@ -32,10 +31,6 @@ class Main extends React.Component {
 
         else if (this.props.page === 'contact') {
             this.setState(() => ({grid: GridC})); 
-        }
-
-        else if (this.props.page === 'creation') {
-            this.setState(() => ({grid: GridD})); 
         }
     }
 
