@@ -50,7 +50,7 @@ const OnlinePresence = ({ onlinePresence }) => {
                         href={presence.url}
                         target='_blank'
                         rel='noopener noreferrer'
-                        className='Entry SocialMediaProfile'
+                        className='OnlinePresence'
                         >
 
                             {Parser(checkIcon(presence.name))}

@@ -7,8 +7,8 @@ import './styles.css';
 import GridA from '../GridA';
 import GridB from '../GridB';
 import GridC from '../GridC';
+import GridD from '../GridD';
 import OnlinePresence from '../../creation/OnlinePresence';
-
 
 class Main extends React.Component {
 
@@ -33,14 +33,18 @@ class Main extends React.Component {
         else if (this.props.page === 'contact') {
             this.setState(() => ({grid: GridC})); 
         }
+
+        else if (this.props.page === 'creation') {
+            this.setState(() => ({grid: GridD})); 
+        }
     }
 
     render() {
         const { page, mainHtml, entries, creation } = this.props;
+        const Grid = this.state.grid;
         let jsx;
 
         if (entries) {
-            const Grid = this.state.grid;
     
             jsx = (
                 <main
@@ -54,7 +58,8 @@ class Main extends React.Component {
         
                     </div>
 
-                    {Grid && <div
+                    {Grid && 
+                    <div
                     className='Main_grid'
                     >
                         <Grid
@@ -68,54 +73,39 @@ class Main extends React.Component {
         }
 
         else if (creation) {
-            const { frontImage, onlinePresence, progress, roles, collaborators, text, creationChildren, backImage } = creation;
+            const { frontImage, progress, roles, collaborators, onlinePresence, text, /* creationChildren,  */backImage } = creation;
             
             jsx = (
                 <main
                 className='Main Main_creation'>
+
+                {onlinePresence && 
+                <div
+                className='Main_onlinePresence'
+                >
+                    <OnlinePresence
+                    onlinePresence={onlinePresence}
+                    ></OnlinePresence>
+                </div>}
 
                 <Img
                 fluid={frontImage.fluid}
                 className='FrontImage'
                 ></Img>
 
-                <h3>progress:</h3>
-                <p>{progress}</p>
+                {Grid && 
+                <div
+                className='Main_grid'
+                >
+                    <Grid
+                    page={page}
+                    progress={progress}
+                    roles={roles}
+                    collaborators={collaborators}
+                    ></Grid>
 
-                <h3 htmlFor="roles">my roles:</h3>
-                <ul id="roles">
-                    {roles.map((role, index) => (
-                        <li
-                        key={index}
-                        >
-                            {role}
-                        </li>
-                    ))}
-                </ul>
-
-                {collaborators && 
-                <div>
-                    <h3 htmlFor="collaborators">my collaborators:</h3>
-                    <ul id="collaborators">
-                        {collaborators.map(collaborator => (
-                            <li
-                            key={collaborator.id}
-                            >
-                                <a 
-                                href={collaborator.url}
-                                target='_blank'
-                                rel='noopener noreferrer'
-                                >
-                                    {collaborator.name}
-                                </a>
-                            </li>
-                        ))}
-                    </ul>
                 </div>}
 
-                {OnlinePresence && <OnlinePresence
-                onlinePresence={onlinePresence}
-                ></OnlinePresence>}
 
                 {text && Parser(text.childMarkdownRemark.html)}
 

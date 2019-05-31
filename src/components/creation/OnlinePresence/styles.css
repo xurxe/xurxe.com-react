@@ -1,0 +1,17 @@
+.OnlinePresence i {
+    background: var(--purple50);
+    color: white;
+    border-radius: 2px;
+    font-size: 1.5rem;
+    line-height: 2.5rem;
+    margin: 0 0 0.5rem 0.5rem;
+    text-align: center;
+    transition: 1s cubic-bezier(0.19, 1, 0.22, 1);
+    width: 2.5rem;
+}
+
+.OnlinePresence:hover i {
+    background: white;
+    color: var(--purple50);
+    transition: 1s cubic-bezier(0.19, 1, 0.22, 1);
+}

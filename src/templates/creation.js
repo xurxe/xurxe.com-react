@@ -20,7 +20,7 @@ const Creation = ({ data }) => {
 
     const jsx = (
         <BodyDiv
-        page='Creation'
+        page='creation'
         title={title}
         subtitle={subtitle}
         creation={creation}
