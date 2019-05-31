@@ -17,8 +17,8 @@ class BodyDiv extends React.Component {
         tucked: true,
         buttonAriaLabel: 'Open the navigation bar',
         classNameNav: 'Nav',
-        classNameNavButton: 'NavButton',
-        classNameNavDiv: 'NavDiv',
+        classNameNavButton: 'NavButton displayNone invisible',
+        classNameNavDiv: 'NavDiv invisible',
         classNameHeaderMainWrapper: 'HeaderMainWrapper HeaderMainWrapper___desktop',
     };
 
