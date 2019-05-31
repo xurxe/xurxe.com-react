@@ -9,3 +9,20 @@
 .Main_onlinePresence {
     text-align: right;
 }
+
+.H3___creation {
+    display: inline-block;
+    margin: 0 0 1rem; 
+}
+
+.FrontImage {
+    margin-bottom: 3rem;
+}
+
+.Main_creationInfo {
+    margin-bottom: 1rem;
+}
+
+.BackImage {
+    margin: 0 5vw;
+}

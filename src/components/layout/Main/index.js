@@ -93,19 +93,50 @@ class Main extends React.Component {
                 className='FrontImage'
                 ></Img>
 
-                {Grid && 
                 <div
-                className='Main_grid'
-                >
-                    <Grid
-                    page={page}
-                    progress={progress}
-                    roles={roles}
-                    collaborators={collaborators}
-                    ></Grid>
+                className='Main_creationInfo'>
 
-                </div>}
+                    <div>
+                        <h3
+                        className='H3___creation'
+                        >
+                            {Parser('stage:&ensp;')}
+                        </h3>
 
+                        <span>{progress}</span>
+                    </div>
+
+                    <div>
+                        <h3 
+                        className='H3___creation'
+                        >
+                            {Parser('my roles:&ensp;')}
+                        </h3>
+
+                        <span>{roles.join(', ')}</span>
+                            
+                    </div>
+
+                    {collaborators && 
+                    <div>
+                        <h3 
+                        className='H3___creation'
+                        >
+                            {Parser('my collaborators:&ensp;')}
+                        </h3>
+
+                            {collaborators.map(collaborator => (
+                                <a 
+                                href={collaborator.url}
+                                target='_blank'
+                                rel='noopener noreferrer'
+                                >
+                                    {collaborator.name}
+                                </a>
+                            )).reduce((previous, current) => [previous, ', ', current])}
+                    </div>}
+
+                </div>
 
                 {text && Parser(text.childMarkdownRemark.html)}
 
