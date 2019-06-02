@@ -1,7 +1,7 @@
 import React from "react";
 import { graphql } from 'gatsby';
 
-import BodyDiv from '../components/layout/BodyDiv';
+import App from '../components/layout/App';
 
 const IndexPage = ({ data }) => {
 
@@ -9,13 +9,13 @@ const IndexPage = ({ data }) => {
     const { title, subtitle, main, entries } = contentfulIndex;
 
     const jsx = (
-        <BodyDiv
+        <App
         page='index'
         title={title}
         subtitle={subtitle}
         mainHtml={main && main.childMarkdownRemark.html}
         entries={entries}
-        ></BodyDiv>
+        ></App>
     );
 
     return jsx;

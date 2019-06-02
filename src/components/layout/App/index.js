@@ -9,7 +9,7 @@ import Helmet from '../../Helmet';
 import Header from '../Header';
 import Main from '../Main';
 
-class BodyDiv extends React.Component {
+class App extends React.Component {
 
     // i use the state to manage the rendering of the navigation bar and the wrapper around the header and main
     state = {
@@ -239,6 +239,7 @@ class BodyDiv extends React.Component {
                                 cover
                                 direction='right'
                                 bg='#7f3fbf'
+                                duration={0.8}
                                 className='NavLogo'
                                 aria-label='Home'
                                 >
@@ -292,6 +293,8 @@ class BodyDiv extends React.Component {
                                     bg='#7f3fbf'
                                     key={page.id}
                                     className='NavA'
+                                    activeClassName="NavA___active"
+                                    duration={0.8}
                                     >
     
                                         {page.title}
@@ -312,6 +315,8 @@ class BodyDiv extends React.Component {
                                     bg='#7f3fbf'
                                     key={page.id}
                                     className='NavA'
+                                    activeClassName="NavA___active"
+                                    duration={0.8}
                                     >
     
                                         {page.title}
@@ -351,4 +356,4 @@ class BodyDiv extends React.Component {
     } 
 };
 
-export default BodyDiv;
+export default App;

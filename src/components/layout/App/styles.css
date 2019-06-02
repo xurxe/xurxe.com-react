@@ -247,7 +247,7 @@ em {
     transition: 0.5s cubic-bezier(0.19, 1, 0.22, 1);
 }
 
-.NavA:hover {
+.NavA:hover, .NavA___active {
     color: var(--purple50);
     background: white;
     transition: 0.5s cubic-bezier(0.19, 1, 0.22, 1);

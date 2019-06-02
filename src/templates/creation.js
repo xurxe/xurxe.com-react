@@ -1,7 +1,7 @@
 import React from "react";
 import { graphql } from 'gatsby';
 
-import BodyDiv from '../components/layout/BodyDiv';
+import App from '../components/layout/App';
 
 const Creation = ({ data }) => {
     const { contentfulCreation } = data;
@@ -19,12 +19,12 @@ const Creation = ({ data }) => {
     }
 
     const jsx = (
-        <BodyDiv
+        <App
         page='creation'
         title={title}
         subtitle={subtitle}
         creation={creation}
-        ></BodyDiv>
+        ></App>
     );
 
     return jsx;
