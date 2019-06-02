@@ -245,13 +245,13 @@ class App extends React.Component {
                                 >
                                     <img
                                     alt='' 
-                                    src={logo.fixed.src}
+                                    src={logoHover.fixed.src}
                                     className={`NavLogo_img`}
                                     />
 
                                     <img
                                     alt='' 
-                                    src={logoHover.fixed.src}
+                                    src={logo.fixed.src}
                                     className={`NavLogo_img NavLogo_img___hover`}
                                     />
 
@@ -287,14 +287,13 @@ class App extends React.Component {
                             >
                                 {workPages.map(page => (
                                     <AniLink
+                                    key={page.id}
                                     to={`/${page.slug}`}
                                     cover
                                     direction='right'
                                     bg='#7f3fbf'
-                                    key={page.id}
-                                    className='NavA'
-                                    activeClassName="NavA___active"
                                     duration={0.8}
+                                    className='NavA hvr-sweep-to-right'
                                     >
     
                                         {page.title}
@@ -309,14 +308,13 @@ class App extends React.Component {
 
                                 {personPages.map(page => (
                                     <AniLink
+                                    key={page.id}
                                     to={`/${page.slug}`}
                                     cover
                                     direction='right'
                                     bg='#7f3fbf'
-                                    key={page.id}
-                                    className='NavA'
-                                    activeClassName="NavA___active"
                                     duration={0.8}
+                                    className='NavA hvr-sweep-to-right'
                                     >
     
                                         {page.title}

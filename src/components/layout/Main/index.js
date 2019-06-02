@@ -1,46 +1,25 @@
 import React from 'react';
 import Parser from 'html-react-parser';
 import Img from 'gatsby-image';
+import { CSSGrid, measureItems, makeResponsive, layout } from 'react-stonecutter';
 
 import './styles.css';
 
-import GridA from '../GridA';
-import GridB from '../GridB';
-import GridC from '../GridC';
 import OnlinePresence from '../../creation/OnlinePresence';
+import Entry from '../Entry';
 
 class Main extends React.Component {
 
-    state = {grid: null}
-
-    componentDidMount = () =>{
-        if (
-        this.props.page === 'index' 
-        || this.props.page === 'stillness'
-        || this.props.page === 'movement'
-        || this.props.page === 'interactivity'
-        ) {
-            this.setState(() => ({
-                grid: GridA,
-            }));        
-        }
-
-        else if (this.props.page === 'skills') {
-            this.setState(() => ({grid: GridB})); 
-        }
-
-        else if (this.props.page === 'contact') {
-            this.setState(() => ({grid: GridC})); 
-        }
-    }
-
     render() {
         const { page, mainHtml, entries, creation } = this.props;
-        const Grid = this.state.grid;
         let jsx;
 
-        if (entries) {
-    
+        if (page === 'index'
+        || page === 'stillness'
+        || page === 'movement'
+        || page === 'interactivity'
+        ) {
+
             jsx = (
                 <main
                 className='Main Main_page'>
@@ -53,21 +32,67 @@ class Main extends React.Component {
         
                     </div>
 
-                    {Grid && 
+                    {entries && 
                     <div
-                    className='Main_grid'
+                    className='Main_grid Main_grid___A'
                     >
-                        <Grid
-                        page={page}
-                        entries={entries}
-                        ></Grid>
-
+                        {entries && entries.map(entry => 
+                            <div
+                            key={entry.id}
+                            >
+                                <Entry 
+                                entry={entry} 
+                                ></Entry>
+                            </div>
+                        )}
                     </div>}
                 </main>
             );
         }
 
-        else if (creation) {
+        else if (page === 'skills') {
+
+            const Grid = makeResponsive(measureItems(CSSGrid), {
+                maxWidth: 1920,
+                minPadding: 200
+            });
+
+            jsx = (
+                <main
+                className='Main Main_page'>
+        
+                    <div
+                    className='Main_text'
+                    >
+        
+                        {mainHtml && Parser(mainHtml)}
+        
+                    </div>
+
+                    {entries && 
+                    <Grid
+                    gutterWidth={27}
+                    gutterHeight={54}
+                    duration={500}
+                    columnWidth={400}
+                    layout={layout.pinterest}
+                    className={`Grid___${page}`}
+                    >
+                        {entries && entries.map(entry => 
+                            <div
+                            key={entry.id}
+                            >
+                                <Entry 
+                                entry={entry} 
+                                ></Entry>
+                            </div>
+                        )}
+                    </Grid>}
+                </main>
+            );
+        }
+
+        else if (page === 'creation'){
             const { frontImage, progress, roles, collaborators, onlinePresence, text, /* creationChildren,  */backImage } = creation;
             
             jsx = (
@@ -144,7 +169,7 @@ class Main extends React.Component {
             );
         }
 
-        else if (!entries && !creation) {
+        else {
             jsx = (
                 <main
                 className='Main Main_page'>
@@ -157,8 +182,8 @@ class Main extends React.Component {
         
                     </div>
                 </main>
-            );
-        };
+            )
+        }
     
         return jsx;
     };

@@ -1,5 +1,5 @@
 import React from 'react';
-import AniLink from 'gatsby-plugin-transition-link/AniLink';
+import { Link } from 'gatsby';
 import Img from 'gatsby-image';
 
 import './styles.css';
@@ -8,17 +8,13 @@ const CreationLink = ({ entry }) => {
     const { title, subtitle, slug, frontImage} = entry;
 
     const jsx = (
-        <AniLink 
-        cover
-        direction='right'
-        bg='#7f3fbf'
+        <Link 
         to={`/${slug}`}
-        duration={0.8}
         className='Entry CreationLink hvr-overline-from-left hvr-underline-from-left'
         >
             <Img
             alt=''
-            fixed={frontImage.fixed}
+            fluid={frontImage.fluid}
             className='CreationLink_img'
             fadeIn={false}
             ></Img>
@@ -41,7 +37,7 @@ const CreationLink = ({ entry }) => {
 
             </div>
 
-        </AniLink>
+        </Link>
     );
 
     return jsx;

@@ -23,7 +23,7 @@
 html {
     color: var(--purple10);
     font-family: 'Roboto', sans-serif;
-    font-size: 18px;
+    font-size: 20px;
 }
 
 * {
@@ -37,7 +37,7 @@ h1 {
     font-family: 'Roboto Mono', serif;
     font-size: 85px;
     font-weight: normal;
-    margin-bottom: 0.25em;
+    margin: 0.1em 0 0.25em;
 }
 
 h2 {
@@ -100,7 +100,7 @@ em {
 
 
 .Nav {
-    background: var(--purple50);
+    background-color: white;
     min-height: 100vh;
     position: fixed;
     top: 0;
@@ -130,6 +130,7 @@ em {
     background: none;
     border: none;
     cursor: pointer;
+    margin: 4px;
     outline: none;
     position: relative;
 }
@@ -200,7 +201,7 @@ em {
 }
 
 .NavLogo_name {
-    color: white;
+    color: var(--purple50);
     font-family: 'Roboto Mono', monospace;
     line-height: initial;
     margin: 0;
@@ -213,20 +214,24 @@ em {
 }
 
 .NavLogo_name___first{
-    font-size: 2.1rem;
+    font-size: 1.9rem;
     letter-spacing: 0.2em;
+    line-height: 1em;
+    margin-top: 0.4rem;
     text-transform: uppercase;
 }
 
 .NavLogo_name___middle {
-    font-size: 2.1rem;
+    font-size: 1.9rem;
     letter-spacing: 0.2em;
+    line-height: 1em;
     text-transform: uppercase;
 }
 
 .NavLogo_name___last {
-    font-size: 1.4rem;
+    font-size: 1.25rem;
     letter-spacing: 0.4em;
+    line-height: 1em;
     text-transform: lowercase;
 }
 
@@ -234,40 +239,49 @@ em {
 
 
 .NavA {
-    color: white;
+    color: var(--purple50);
     display: block;
     letter-spacing: 0.2em;
     padding: 0.2rem 1.5rem 0.3rem;
     text-decoration: none;
-    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: auto;
+    -moz-font-smoothing: auto;
+    -moz-osx-font-smoothing: auto;
+    -o-font-smoothing: auto;
+    transition: 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+/* Modified from hover.css */
+.hvr-sweep-to-right {
+    vertical-align: middle;
+    transform: perspective(1px) translateZ(0);
+    position: relative;
+}
+.hvr-sweep-to-right:before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: var(--purple50);
+    transform: scaleX(0);
+    transform-origin: 0 50%;
+    transition: transform 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+}
+.hvr-sweep-to-right:hover, .hvr-sweep-to-right:focus, .hvr-sweep-to-right:active {
+    color: white;
+    outline: none;
+    transition: color 0.5s cubic-bezier(0.19, 1, 0.22, 1);
     -webkit-font-smoothing: antialiased;
     -moz-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    -o-font-smoothing: antialiased;
-    transition: 0.5s cubic-bezier(0.19, 1, 0.22, 1);
-}
+    -o-font-smoothing: antialiased;}
 
-.NavA:hover, .NavA___active {
-    color: var(--purple50);
-    background: white;
-    transition: 0.5s cubic-bezier(0.19, 1, 0.22, 1);
-    -webkit-font-smoothing: auto;
-    -moz-font-smoothing: auto;
-    -moz-osx-font-smoothing: auto;
-    -o-font-smoothing: auto;
+.hvr-sweep-to-right:hover:before, .hvr-sweep-to-right:focus:before, .hvr-sweep-to-right:active:before {
+    transform: scaleX(1);
 }
-
-.NavA:focus {
-    background: white;
-    color: var(--purple);
-    outline: none;
-    transition: 0.5s cubic-bezier(0.19, 1, 0.22, 1);
-    -webkit-font-smoothing: auto;
-    -moz-font-smoothing: auto;
-    -moz-osx-font-smoothing: auto;
-    -o-font-smoothing: auto;
-}
-
 
 
 
@@ -292,7 +306,7 @@ em {
 
 
 .HeaderMainWrapper {
-    overflow: hidden;
+    width: 100vw;
 }
 
 .HeaderMainWrapper___desktop {
