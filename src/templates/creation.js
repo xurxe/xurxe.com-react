@@ -5,7 +5,7 @@ import App from '../components/layout/App';
 
 const Creation = ({ data }) => {
     const { contentfulCreation } = data;
-    const { title, subtitle, frontImage, onlinePresence, progress, roles, collaborators, text, creationChildren, backImage } = contentfulCreation;
+    const { title, subtitle, frontImage, onlinePresence, progress, roles, collaborators, tools, text, creationChildren, backImage } = contentfulCreation;
 
     const creation = {
         frontImage: frontImage,
@@ -13,6 +13,7 @@ const Creation = ({ data }) => {
         progress: progress,
         roles: roles,
         collaborators: collaborators,
+        tools: tools,
         text: text,
         creationChildren: creationChildren,
         backImage: backImage,
@@ -61,6 +62,7 @@ query($slug: String!){
             name
             url
         }
+        tools
         text {
             childMarkdownRemark {
                 html

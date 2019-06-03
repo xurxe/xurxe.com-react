@@ -1,7 +1,6 @@
 import React from 'react';
 import Parser from 'html-react-parser';
 import Img from 'gatsby-image';
-import { CSSGrid, measureItems, makeResponsive, layout } from 'react-stonecutter';
 
 import './styles.css';
 
@@ -52,11 +51,6 @@ class Main extends React.Component {
 
         else if (page === 'skills') {
 
-            const Grid = makeResponsive(measureItems(CSSGrid), {
-                maxWidth: 1920,
-                minPadding: 200
-            });
-
             jsx = (
                 <main
                 className='Main Main_page'>
@@ -70,13 +64,8 @@ class Main extends React.Component {
                     </div>
 
                     {entries && 
-                    <Grid
-                    gutterWidth={27}
-                    gutterHeight={54}
-                    duration={500}
-                    columnWidth={400}
-                    layout={layout.pinterest}
-                    className={`Grid___${page}`}
+                    <div
+                    className='Main_grid Main_grid___B'
                     >
                         {entries && entries.map(entry => 
                             <div
@@ -87,13 +76,13 @@ class Main extends React.Component {
                                 ></Entry>
                             </div>
                         )}
-                    </Grid>}
+                    </div>}
                 </main>
             );
         }
 
         else if (page === 'creation'){
-            const { frontImage, progress, roles, collaborators, onlinePresence, text, /* creationChildren,  */backImage } = creation;
+            const { onlinePresence, frontImage, progress, roles, collaborators, tools, text, /* creationChildren,  */backImage } = creation;
             
             jsx = (
                 <main
@@ -141,24 +130,71 @@ class Main extends React.Component {
                     <div>
                         <h3 
                         className='H3___creation'
+                        htmlFor='collaborators'
                         >
                             {Parser('my collaborators:&ensp;')}
                         </h3>
 
+                        <ul
+                        id='collaborators'
+                        className='ul___creation'
+                        >
                             {collaborators.map(collaborator => (
-                                <a 
-                                href={collaborator.url}
-                                target='_blank'
-                                rel='noopener noreferrer'
+
+                                <li
+                                key={collaborator.id}
+                                className='li___creation'
                                 >
-                                    {collaborator.name}
-                                </a>
-                            )).reduce((previous, current) => [previous, ', ', current])}
+                                    {collaborator.url && <a 
+                                    href={collaborator.url}
+                                    target='_blank'
+                                    rel='noopener noreferrer'
+                                    >
+                                        {collaborator.name}
+                                    </a>}
+
+                                    {!collaborator.url && collaborator.name}
+
+                                </li>
+                            ))}
+                        </ul>
+
                     </div>}
+
+                    <div>
+                        <h3 
+                        className='H3___creation'
+                        htmlFor='tools'
+                        >
+                            {Parser('made with:&ensp;')}
+                        </h3>
+
+                        <ul
+                        id='tools'
+                        className='ul___creation'
+                        >
+                            {tools.map((tool, i) => (
+
+                                <li
+                                key={i}
+                                className='li___creation'
+                                >
+
+                                    {tool}
+
+                                </li>
+                            ))}
+                        </ul>
+
+                    </div>
 
                 </div>
 
-                {text && Parser(text.childMarkdownRemark.html)}
+                <div className='Main_text'>
+
+                    {text && Parser(text.childMarkdownRemark.html)}
+
+                </div>
 
                 <Img
                 fluid={backImage.fluid}

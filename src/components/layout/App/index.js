@@ -4,6 +4,7 @@ import { StaticQuery, graphql } from 'gatsby';
 import AniLink from 'gatsby-plugin-transition-link/AniLink';
 
 import './styles.css';
+import '../../common.css'
 
 import Helmet from '../../Helmet';
 import Header from '../Header';
@@ -22,8 +23,8 @@ class App extends React.Component {
         classNameHeaderMainWrapper: 'HeaderMainWrapper HeaderMainWrapper___desktop',
     };
 
-    // on mount, if the screen size is under 600px, render mobile layout; otherwise, render desktop layout
-    componentDidMount = () => window.matchMedia('(max-width: 600px)').matches ? this.renderMobile() : this.renderDesktop();
+    // on mount, if the screen size is under 700px, render mobile layout; otherwise, render desktop layout
+    componentDidMount = () => window.matchMedia('(max-width: 700px)').matches ? this.renderMobile() : this.renderDesktop();
 
     renderMobile = () => {
         this.setState(() => ({
@@ -50,7 +51,7 @@ class App extends React.Component {
         // if currently on desktop layout, and it's a small screen, transition to mobile layout
         if (
             this.state.desktop
-            && window.matchMedia('(max-width: 600px)').matches
+            && window.matchMedia('(max-width: 700px)').matches
         ) {
             this.changeDesktopToMobile();
         }
@@ -58,7 +59,7 @@ class App extends React.Component {
         // otherwise, if currently on mobile layout, transition to desktop layout
         else if (
             !this.state.desktop 
-            && !window.matchMedia('(max-width: 600px)').matches
+            && !window.matchMedia('(max-width: 700px)').matches
         ) {
             this.changeMobileToDesktop();
         }
@@ -75,7 +76,7 @@ class App extends React.Component {
                 classNameNav: 'Nav Nav___tucked',
                 classNameNavButton: 'NavButton displayBlock invisible',
                 classNameNavDiv: 'NavDiv displayNone invisible',
-                classNameHeaderMainWrapper: 'HeaderMainWrapper HeaderMainWrapper___narrowPadding',
+                classNameHeaderMainWrapper: 'HeaderMainWrapper HeaderMainWrapper___mobile',
             }));
         }, 500);
 
@@ -97,7 +98,7 @@ class App extends React.Component {
             this.setState(() => ({
                 classNameNav: 'Nav Nav___desktop',
                 classNameNavButton: 'NavButton displayNone invisible',
-                classNameHeaderMainWrapper: 'HeaderMainWrapper HeaderMainWrapper___widePadding',
+                classNameHeaderMainWrapper: 'HeaderMainWrapper HeaderMainWrapper___desktop',
             }));
         }, 500);
 
@@ -152,7 +153,7 @@ class App extends React.Component {
                         id
                         logo {
                             id
-                            fixed (quality: 100, width: 144, height: 144) {
+                            fixed (quality: 100, width: 160, height: 160) {
                                 aspectRatio
                                 width
                                 height
@@ -164,7 +165,7 @@ class App extends React.Component {
                         }
                         logoHover {
                             id
-                            fixed (quality: 100, width: 144, height: 144) {
+                            fixed (quality: 100, width: 160, height: 160) {
                                 aspectRatio
                                 width
                                 height
@@ -293,7 +294,8 @@ class App extends React.Component {
                                     direction='right'
                                     bg='#7f3fbf'
                                     duration={0.8}
-                                    className='NavA hvr-sweep-to-right'
+                                    className='NavA hvr-underline-from-left___App'
+                                    activeClassName='hvr-underline-from-left___App___active'
                                     >
     
                                         {page.title}
@@ -314,7 +316,8 @@ class App extends React.Component {
                                     direction='right'
                                     bg='#7f3fbf'
                                     duration={0.8}
-                                    className='NavA hvr-sweep-to-right'
+                                    className='NavA hvr-underline-from-left___App'
+                                    activeClassName='hvr-underline-from-left___App___active'
                                     >
     
                                         {page.title}

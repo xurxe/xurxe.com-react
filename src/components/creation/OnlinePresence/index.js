@@ -24,8 +24,6 @@ const OnlinePresence = ({ onlinePresence }) => {
             render={(data) => {
                 const { allContentfulSocialMediaProfile } = data;
                 const socialMediaProfiles = allContentfulSocialMediaProfile.edges;
-                console.log(allContentfulSocialMediaProfile.edges);
-
 
                 const checkIcon = (name) => {
 

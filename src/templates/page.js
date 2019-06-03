@@ -15,7 +15,7 @@ const Page = ({ data }) => {
         || slug === 'interactivity'
     ) {
         entries = contentfulIndex.entries.filter(
-            entry => entry.category === slug
+            entry => entry.type.includes(slug)
         )
     }
 
@@ -81,7 +81,7 @@ query($slug: String!){
         id
         entries {
             id
-            category
+            type
             title
             subtitle
             slug

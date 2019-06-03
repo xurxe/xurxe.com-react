@@ -1,0 +1,104 @@
+:root {
+    --purple95: hsl(270, 50%, 95%);
+    --purple90: hsl(270, 50%, 90%);
+    --purple85: hsl(270, 50%, 85%);
+    --purple80: hsl(270, 50%, 80%);
+    --purple75: hsl(270, 50%, 75%);
+    --purple70: hsl(270, 50%, 70%);
+    --purple65: hsl(270, 50%, 65%);
+    --purple60: hsl(270, 50%, 60%);
+    --purple55: hsl(270, 50%, 55%);
+    --purple50: hsl(270, 50%, 50%);
+    --purple45: hsl(270, 50%, 45%);
+    --purple40: hsl(270, 50%, 40%);
+    --purple35: hsl(270, 50%, 35%);
+    --purple30: hsl(270, 50%, 30%);
+    --purple25: hsl(270, 50%, 25%);
+    --purple20: hsl(270, 50%, 20%);
+    --purple15: hsl(270, 50%, 15%);
+    --purple10: hsl(270, 50%, 10%);
+    --purple05: hsl(270, 50%, 05%);
+}
+
+html {
+    color: var(--purple10);
+    font-family: 'Roboto', sans-serif;
+    font-size: 20px;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+h1 {
+    color: var(--purple50);
+    font-family: 'Roboto Mono', serif;
+    font-size: 75px;
+    font-weight: normal;
+    margin: 0 0 0.25em;
+}
+
+h2 {
+    color: var(--purple50);
+    font-size: 30px;
+    font-weight: normal;
+    letter-spacing: 0.05em;
+    margin: 1em 0 1em;
+}
+
+h3 {
+    color: var(--purple40);
+    font-size: 1.25rem;
+    margin: 2em 0 0.5em; 
+}
+
+p {
+    line-height: 1.5rem;
+    margin-bottom: 1em;
+}
+
+li {
+    line-height: 1.5rem;
+}
+
+a {
+    color: var(--purple50);
+}
+
+strong {
+    color: var(--purple50);
+    display: inline;
+    font-size: 30px;
+    font-weight: normal;
+    letter-spacing: 0.05em;
+}
+
+em {
+    color: var(--purple50);
+    font-style: normal;
+    font-weight: bold;
+    letter-spacing: 0.05em;
+}
+
+
+@media only screen and (min-width: 600px) and (max-width: 1000px) {
+    h1 {
+        font-size: calc(40px + (75 - 40) * (100vw - 600px) / (1000 - 600));    
+    }
+
+    h2, strong {
+        font-size: calc(25px + (30 - 25) * (100vw - 600px) / (1000 - 600)); 
+    }   
+}
+
+@media only screen and (max-width: 600px) {
+    h1 {
+        font-size: 40px;
+    }
+
+    h2, strong {
+        font-size: 25px;
+    }
+}
