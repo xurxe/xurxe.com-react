@@ -41,15 +41,14 @@ query {
             slug
             frontImage {
                 id
-                fixed (width: 264, quality: 100){
+                fluid (quality: 100){
                     base64
                     aspectRatio
-                    width
-                    height
                     src
                     srcSet
                     srcWebp
                     srcSetWebp
+                    sizes
                 }
             }
         }

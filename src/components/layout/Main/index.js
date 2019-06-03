@@ -4,43 +4,21 @@ import Img from 'gatsby-image';
 
 import './styles.css';
 
-import GridA from '../GridA';
-import GridB from '../GridB';
-import GridC from '../GridC';
 import OnlinePresence from '../../creation/OnlinePresence';
+import Entry from '../Entry';
 
 class Main extends React.Component {
 
-    state = {grid: null}
-
-    componentDidMount = () =>{
-        if (
-        this.props.page === 'index' 
-        || this.props.page === 'stillness'
-        || this.props.page === 'movement'
-        || this.props.page === 'interactivity'
-        ) {
-            this.setState(() => ({
-                grid: GridA,
-            }));        
-        }
-
-        else if (this.props.page === 'skills') {
-            this.setState(() => ({grid: GridB})); 
-        }
-
-        else if (this.props.page === 'contact') {
-            this.setState(() => ({grid: GridC})); 
-        }
-    }
-
     render() {
         const { page, mainHtml, entries, creation } = this.props;
-        const Grid = this.state.grid;
         let jsx;
 
-        if (entries) {
-    
+        if (page === 'index'
+        || page === 'stillness'
+        || page === 'movement'
+        || page === 'interactivity'
+        ) {
+
             jsx = (
                 <main
                 className='Main Main_page'>
@@ -53,22 +31,58 @@ class Main extends React.Component {
         
                     </div>
 
-                    {Grid && 
+                    {entries && 
                     <div
-                    className='Main_grid'
+                    className='Main_grid Main_grid___A'
                     >
-                        <Grid
-                        page={page}
-                        entries={entries}
-                        ></Grid>
-
+                        {entries && entries.map(entry => 
+                            <div
+                            key={entry.id}
+                            >
+                                <Entry 
+                                entry={entry} 
+                                ></Entry>
+                            </div>
+                        )}
                     </div>}
                 </main>
             );
         }
 
-        else if (creation) {
-            const { frontImage, progress, roles, collaborators, onlinePresence, text, /* creationChildren,  */backImage } = creation;
+        else if (page === 'skills') {
+
+            jsx = (
+                <main
+                className='Main Main_page'>
+        
+                    <div
+                    className='Main_text'
+                    >
+        
+                        {mainHtml && Parser(mainHtml)}
+        
+                    </div>
+
+                    {entries && 
+                    <div
+                    className='Main_grid Main_grid___B'
+                    >
+                        {entries && entries.map(entry => 
+                            <div
+                            key={entry.id}
+                            >
+                                <Entry 
+                                entry={entry} 
+                                ></Entry>
+                            </div>
+                        )}
+                    </div>}
+                </main>
+            );
+        }
+
+        else if (page === 'creation'){
+            const { onlinePresence, frontImage, progress, roles, collaborators, tools, text, /* creationChildren,  */backImage } = creation;
             
             jsx = (
                 <main
@@ -116,24 +130,71 @@ class Main extends React.Component {
                     <div>
                         <h3 
                         className='H3___creation'
+                        htmlFor='collaborators'
                         >
                             {Parser('my collaborators:&ensp;')}
                         </h3>
 
+                        <ul
+                        id='collaborators'
+                        className='ul___creation'
+                        >
                             {collaborators.map(collaborator => (
-                                <a 
-                                href={collaborator.url}
-                                target='_blank'
-                                rel='noopener noreferrer'
+
+                                <li
+                                key={collaborator.id}
+                                className='li___creation'
                                 >
-                                    {collaborator.name}
-                                </a>
-                            )).reduce((previous, current) => [previous, ', ', current])}
+                                    {collaborator.url && <a 
+                                    href={collaborator.url}
+                                    target='_blank'
+                                    rel='noopener noreferrer'
+                                    >
+                                        {collaborator.name}
+                                    </a>}
+
+                                    {!collaborator.url && collaborator.name}
+
+                                </li>
+                            ))}
+                        </ul>
+
                     </div>}
+
+                    <div>
+                        <h3 
+                        className='H3___creation'
+                        htmlFor='tools'
+                        >
+                            {Parser('made with:&ensp;')}
+                        </h3>
+
+                        <ul
+                        id='tools'
+                        className='ul___creation'
+                        >
+                            {tools.map((tool, i) => (
+
+                                <li
+                                key={i}
+                                className='li___creation'
+                                >
+
+                                    {tool}
+
+                                </li>
+                            ))}
+                        </ul>
+
+                    </div>
 
                 </div>
 
-                {text && Parser(text.childMarkdownRemark.html)}
+                <div className='Main_text'>
+
+                    {text && Parser(text.childMarkdownRemark.html)}
+
+                </div>
 
                 <Img
                 fluid={backImage.fluid}
@@ -144,7 +205,7 @@ class Main extends React.Component {
             );
         }
 
-        else if (!entries && !creation) {
+        else {
             jsx = (
                 <main
                 className='Main Main_page'>
@@ -157,8 +218,8 @@ class Main extends React.Component {
         
                     </div>
                 </main>
-            );
-        };
+            )
+        }
     
         return jsx;
     };

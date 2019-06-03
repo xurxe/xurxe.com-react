@@ -1,6 +1,7 @@
 import React from 'react';
-import AniLink from 'gatsby-plugin-transition-link/AniLink';
 import Img from 'gatsby-image';
+import AniLink from 'gatsby-plugin-transition-link/AniLink';
+import Parser from 'html-react-parser';
 
 import './styles.css';
 
@@ -9,16 +10,16 @@ const CreationLink = ({ entry }) => {
 
     const jsx = (
         <AniLink 
+        to={`/${slug}`}
         cover
         direction='right'
-        bg='#7f3fbf'
-        to={`/${slug}`}
+        bg={`#7f3fbf`}
         duration={0.8}
-        className='Entry CreationLink hvr-overline-from-left hvr-underline-from-left'
+        className='Entry CreationLink hvr-overline-from-left___creationLink hvr-underline-from-left___creationLink'
         >
             <Img
             alt=''
-            fixed={frontImage.fixed}
+            fluid={frontImage.fluid}
             className='CreationLink_img'
             fadeIn={false}
             ></Img>
@@ -30,13 +31,13 @@ const CreationLink = ({ entry }) => {
                 <p
                 className='CreationLink_p CreationLink_p___title'
                 >
-                    {title} <br />
+                    {Parser(title)}
                 </p>
 
                 <p
                 className='CreationLink_p CreationLink_p___subtitle'
                 >
-                    {subtitle} <br />
+                    {Parser(subtitle)}
                 </p>
 
             </div>

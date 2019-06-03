@@ -15,7 +15,7 @@ const Page = ({ data }) => {
         || slug === 'interactivity'
     ) {
         entries = contentfulIndex.entries.filter(
-            entry => entry.category === slug
+            entry => entry.type.includes(slug)
         )
     }
 
@@ -81,21 +81,20 @@ query($slug: String!){
         id
         entries {
             id
-            category
+            type
             title
             subtitle
             slug
             frontImage {
                 id
-                fixed (width: 264, quality: 100){
+                fluid (quality: 100){
                     base64
                     aspectRatio
-                    width
-                    height
                     src
                     srcSet
                     srcWebp
                     srcSetWebp
+                    sizes
                 }
             }
         }
