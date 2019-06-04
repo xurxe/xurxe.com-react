@@ -4,7 +4,7 @@ import { StaticQuery, graphql } from 'gatsby';
 
 import './styles.css';
 
-const OnlinePresence = ({ onlinePresence }) => {
+const OnlinePresence = ({ onlinePresence, modifier }) => {
 
     const staticQuery = (<StaticQuery 
             query={
@@ -48,7 +48,7 @@ const OnlinePresence = ({ onlinePresence }) => {
                         href={presence.url}
                         target='_blank'
                         rel='noopener noreferrer'
-                        className='OnlinePresence'
+                        className={`OnlinePresence OnlinePresence___${modifier}`}
                         >
 
                             {Parser(checkIcon(presence.name))}

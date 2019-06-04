@@ -67,6 +67,11 @@ a {
     color: var(--purple50);
 }
 
+a:hover, a:focus {
+    outline: none;
+    text-decoration: none;
+}
+
 strong {
     color: var(--purple50);
     display: inline;

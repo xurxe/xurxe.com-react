@@ -21,7 +21,6 @@ const CreationLink = ({ entry }) => {
             alt=''
             fluid={frontImage.fluid}
             className='CreationLink_img'
-            fadeIn={false}
             ></Img>
 
             <div

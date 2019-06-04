@@ -1,17 +1,35 @@
-.OnlinePresence i {
+.OnlinePresence___parent i {
     background: var(--purple50);
     color: white;
     border-radius: 2px;
     font-size: 1.5rem;
     line-height: 2.5rem;
-    margin: 0 0 0.5rem 0.5rem;
+    margin: 0 0 0.75rem 0.75rem;
     text-align: center;
     transition: 1s cubic-bezier(0.19, 1, 0.22, 1);
     width: 2.5rem;
 }
 
-.OnlinePresence:hover i {
+.OnlinePresence___parent:hover i {
     background: white;
     color: var(--purple50);
+    transition: 1s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.OnlinePresence___child i {
+    background: white;
+    color: var(--purple50);
+    border-radius: 2px;
+    font-size: 1.25rem;
+    line-height: 2rem;
+    margin: 0 0.25rem;
+    text-align: center;
+    transition: 1s cubic-bezier(0.19, 1, 0.22, 1);
+    width: 2rem;
+}
+
+.OnlinePresence___child:hover i {
+    background: var(--purple50);
+    color: white;
     transition: 1s cubic-bezier(0.19, 1, 0.22, 1);
 }

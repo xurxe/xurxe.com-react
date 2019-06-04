@@ -1,0 +1,13 @@
+.CreationChild {
+    padding: 0.5rem 0 0;
+    border-top: 4px solid var(--purple50);
+}
+
+.CreationChild_div {
+    text-align: center;
+}
+
+.CreationChild_p {
+    line-height: 1em;
+    margin: 1rem 0 0.5rem;
+}

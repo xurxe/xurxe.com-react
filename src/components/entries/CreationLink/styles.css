@@ -1,18 +1,11 @@
 .CreationLink {
-    color: var(--purple10);
     display: block;
     padding: 1rem 0;
     text-decoration: none;
-    transition: 1s cubic-bezier(0.19, 1, 0.22, 1);
-}
-
-.CreationLink:hover {
-    transition: 1s cubic-bezier(0.19, 1, 0.22, 1);
 }
 
 .CreationLink:focus {
     outline: none;
-    transition: 1s cubic-bezier(0.19, 1, 0.22, 1);
 }
 
 .CreationLink_div {
@@ -26,6 +19,7 @@
 }
 
 .CreationLink_p___title {
+    color: var(--purple10);
     font-weight: bolder;
 }
 

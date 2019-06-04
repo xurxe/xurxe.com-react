@@ -50,6 +50,7 @@ query($slug: String!){
                 sizes
             }
         }
+        frontImageAlt
         onlinePresence {
             id
             name
@@ -73,15 +74,14 @@ query($slug: String!){
             childTitle
             childImage {
                 id
-                fixed (width: 264, quality: 100){
+                fluid (quality: 100){
                     base64
                     aspectRatio
-                    width
-                    height
                     src
                     srcSet
                     srcWebp
                     srcSetWebp
+                    sizes
                 }
             }
             childOnlinePresence {
@@ -101,6 +101,7 @@ query($slug: String!){
                 sizes
             }
         }
+        backImageAlt
     }
 }
 `
