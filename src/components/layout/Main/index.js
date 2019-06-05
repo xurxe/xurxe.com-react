@@ -202,10 +202,10 @@ class Main extends React.Component {
                     )}
                 </div>}
 
-                <Img
+                {backImage && <Img
                 fluid={backImage.fluid}
                 className='BackImage'
-                ></Img>
+                ></Img>}
 
                 </main>
             );

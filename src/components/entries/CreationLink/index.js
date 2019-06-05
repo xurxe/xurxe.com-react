@@ -6,7 +6,7 @@ import Parser from 'html-react-parser';
 import './styles.css';
 
 const CreationLink = ({ entry }) => {
-    const { title, subtitle, slug, frontImage} = entry;
+    const { title, subtitle, slug, coverPhoto} = entry;
 
     const jsx = (
         <AniLink 
@@ -19,7 +19,7 @@ const CreationLink = ({ entry }) => {
         >
             <Img
             alt=''
-            fluid={frontImage.fluid}
+            fluid={coverPhoto.fluid}
             className='CreationLink_img'
             ></Img>
 

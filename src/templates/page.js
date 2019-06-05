@@ -85,9 +85,8 @@ query($slug: String!){
             title
             subtitle
             slug
-            frontImage {
-                id
-                fluid (quality: 100){
+            coverPhoto {
+                fluid (maxWidth: 1200, quality: 100) {
                     base64
                     aspectRatio
                     src

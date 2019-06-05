@@ -31,10 +31,10 @@ const CreationChild = ({ creationChild }) => {
                     {Parser(childTitle)}
                 </p>
 
-                <OnlinePresence
+                {childOnlinePresence && <OnlinePresence
                 onlinePresence={childOnlinePresence}
                 modifier='child'
-                ></OnlinePresence>
+                ></OnlinePresence>}
 
             </div>
 

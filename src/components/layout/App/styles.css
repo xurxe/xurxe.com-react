@@ -1,19 +1,36 @@
 .Nav {
     background-color: white;
     min-height: 100vh;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    max-height: 100%;
     position: fixed;
     top: 0;
     left: 0;
     z-index: 10;
 }
 
+.Nav::-webkit-scrollbar {
+    width: 4px;
+}
+
+.Nav::-webkit-scrollbar-track {
+    background: white;
+}
+
+.Nav::-webkit-scrollbar-thumb {
+    background: var(--purple50);
+}
+
+
+
 .Nav___desktop {
-    width: 9.5rem;
+    width: calc(11rem + 4px);
     transition: 1s cubic-bezier(0.19, 1, 0.22, 1);
 }
 
 .Nav___tucked {
-    width: 2rem;
+    width: calc(2rem + 4px);
     transition: 1s cubic-bezier(0.19, 1, 0.22, 1);
 }
 
@@ -143,6 +160,7 @@
     color: var(--purple50);
     display: block;
     letter-spacing: 0.2em;
+    margin-right: 1.5rem;
     padding: 0.2rem 0 0.3rem 1.5rem;
     text-decoration: none;
     transition: 0.5s cubic-bezier(0.19, 1, 0.22, 1);
@@ -206,6 +224,14 @@
     transition: 1s cubic-bezier(0.19, 1, 0.22, 1);
 }
 
+.Nav_scrollableDiv {
+    min-height: 100%;
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+
+
+
 
 
 
@@ -213,7 +239,7 @@
 .HeaderMainWrapper___desktop {
     margin-left: 9.5rem;
     padding: 2.5rem 10vw 3rem 8vw;
-    width: calc(100vw - 9.5rem);
+    width: calc(100vw - 11rem - 4px);
     transition: 1s cubic-bezier(0.19, 1, 0.22, 1);
 }
 

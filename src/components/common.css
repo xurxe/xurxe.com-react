@@ -87,6 +87,11 @@ em {
     letter-spacing: 0.05em;
 }
 
+li {
+    list-style-position: inside;
+    margin-bottom: 1rem;
+}
+
 
 @media only screen and (min-width: 600px) and (max-width: 1000px) {
     h1 {
