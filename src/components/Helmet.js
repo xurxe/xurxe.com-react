@@ -38,6 +38,15 @@ const HelmetComponent = (/* { title, description, keywords, image, url, slug } *
                     <meta property="og:image" content={contentfulSeo.image.src} />
                     <meta property="og:url" content="http://xurxe.com/" />
                     <meta name="twitter:card" content="summary_large_image" />
+                    <meta 
+                    property='og:image:width' 
+                    content='1200'
+                    />
+
+                    <meta 
+                    property='og:image:height' 
+                    content='630'
+                    />
         
                     <meta
                     name="description"
