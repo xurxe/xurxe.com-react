@@ -19,7 +19,7 @@ class App extends React.Component {
         buttonAriaLabel: 'Open the navigation bar',
         classNameNav: 'Nav',
         classNameNavButton: 'NavButton displayNone invisible',
-        classNameNavDiv: 'NavDiv invisible',
+        classNameNavDiv: 'NavDiv displayNone invisible',
         classNameHeaderMainWrapper: 'HeaderMainWrapper HeaderMainWrapper___desktop',
     };
 
@@ -38,7 +38,7 @@ class App extends React.Component {
 
     renderDesktop = () => {
         this.setState(() => ({
-            classNameNav: 'Nav Nav___desktop',
+            classNameNav: 'Nav Nav___desktop Nav___scrollable',
             classNameNavButton: 'NavButton displayNone invisible',
             classNameNavDiv: 'NavDiv displayBlock visible',
             classNameHeaderMainWrapper: 'HeaderMainWrapper HeaderMainWrapper___desktop',
@@ -96,7 +96,7 @@ class App extends React.Component {
 
         setTimeout(() => {
             this.setState(() => ({
-                classNameNav: 'Nav Nav___desktop',
+                classNameNav: 'Nav Nav___desktop Nav___scrollable',
                 classNameNavButton: 'NavButton displayNone invisible',
                 classNameHeaderMainWrapper: 'HeaderMainWrapper HeaderMainWrapper___desktop',
             }));
@@ -116,7 +116,7 @@ class App extends React.Component {
         this.setState(() => ({
             tucked: false,
             buttonAriaLabel: 'Close the navigation bar',
-            classNameNav: 'Nav Nav___untucked',
+            classNameNav: 'Nav Nav___untucked Nav___scrollable',
             classNameNavDiv: 'NavDiv NavDiv___untucked displayBlock invisible',
         }));
 
