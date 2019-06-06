@@ -17,13 +17,6 @@ module.exports = {
             },
         },
         `html-react-parser`,
-        {
-            resolve: `gatsby-plugin-remote-images`,
-            options: {
-                nodeType: 'myNodes',
-                imagePath: 'imageUrl',
-            },
-        },
         `gatsby-plugin-sharp`,
         `gatsby-transformer-sharp`,
         `gatsby-transformer-remark`,
@@ -33,5 +26,6 @@ module.exports = {
                 postCssPlugins: [require(`autoprefixer`)],
             },
         },
+        `gatsby-plugin-transition-link`,
     ],
 }
