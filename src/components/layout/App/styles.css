@@ -1,24 +1,27 @@
 .Nav {
     background-color: white;
     min-height: 100vh;
-    overflow-x: hidden;
-    overflow-y: scroll;
-    max-height: 100%;
     position: fixed;
     top: 0;
     left: 0;
     z-index: 10;
 }
 
-.Nav::-webkit-scrollbar {
+.Nav___scrollable {
+    overflow-x: hidden;
+    overflow-y: scroll;
+    max-height: 100%;
+}
+
+.Nav___scrollable::-webkit-scrollbar {
     width: 4px;
 }
 
-.Nav::-webkit-scrollbar-track {
+.Nav___scrollable::-webkit-scrollbar-track {
     background: white;
 }
 
-.Nav::-webkit-scrollbar-thumb {
+.Nav___scrollable::-webkit-scrollbar-thumb {
     background: var(--purple50);
 }
 

@@ -1,6 +1,6 @@
 .CreationChild {
-    padding: 0.5rem 0 0;
-    border-top: 4px solid var(--purple50);
+    padding: 1rem;
+    border: 2px solid var(--purple50);
 }
 
 .CreationChild_div {
