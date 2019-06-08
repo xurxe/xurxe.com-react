@@ -25,8 +25,6 @@
     background: var(--purple50);
 }
 
-
-
 .Nav___desktop {
     width: calc(11rem + 4px);
     transition: 1s cubic-bezier(0.19, 1, 0.22, 1);
@@ -240,14 +238,13 @@
 
 
 .HeaderMainWrapper___desktop {
-    margin-left: 9.5rem;
-    padding: 2.5rem 10vw 3rem 8vw;
-    width: calc(100vw - 11rem - 4px);
+    margin: 0 1.5rem 0 11rem;
+    padding: 2.5rem 8vw 3rem 8vw;
     transition: 1s cubic-bezier(0.19, 1, 0.22, 1);
 }
 
 .HeaderMainWrapper___mobile {
-    padding: 3rem;
-    width: 100vw;
+    margin: 0 0 0 2rem;
+    padding: 1rem;
     transition: 1s cubic-bezier(0.19, 1, 0.22, 1);
 }
