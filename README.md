@@ -1,13 +1,19 @@
-# My professional portfolio
+# My portfolio
 
-Coming soon
+Just a home for my creations: websites, games, illustrations, photos, animations...
 
 ## Demo
 
-[https://xurxe-portfolio-develop.netlify.com](https://xurxe-portfolio-develop.netlify.com)
+[xurxe.com](https://xurxe.com)
 
 ## Tech stack
-Coming soon
+
+- Contentful
+- CSS
+- Gatsby
+- GraphQL
+- Netlify
+- React
 
 ## Author
 
